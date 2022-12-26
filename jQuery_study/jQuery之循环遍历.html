@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery.min.js"></script>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        //语法1
+        var arr = ['red', 'blue', 'green'];
+        $("div").each(function(index, domEle){
+            // console.log(index);
+            // console.log(domEle);
+            // domEle.style.color = 'pink';//domEle是domEle元素
+            //用jQuery方法时要转换为jQuery对象
+            $(domEle).css("color", arr[index]);
+        })
+
+        //语法2
+        $.each({
+            age: 18,
+            name: 'cjx',
+            gender: '男'
+        },function(index, ele){
+            console.log(index);//如果是遍历对象，则index为属性名，ele为属性值
+            console.log(ele);
+        })
+    </script>
+</body>
+</html>

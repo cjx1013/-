@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+            width: 80%;
+            height: 300px;
+            margin: 200px auto;
+            display: flex;
+            min-width: 500px;/*最小宽度，将浏览器窗口缩小到500px后就不能缩小了*/
+        }
+        section div{
+            height: 100%;
+        }
+        div:first-child{
+            background-color: pink;
+            width: 300px;/*子盒子也可以固定长度*/
+        }
+        div:nth-child(2){
+            background-color: hotpink;
+            flex: 2;/*从剩下的蛋糕中分两块*/
+            margin: 0 5px;/*即使有外边距，但是也不会导致有子盒子被挤出去*/
+        }
+        div:last-child{
+            background-color: pink;
+            flex: 3;/*从剩下的蛋糕中分三块*/
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </section>
+</body>
+</html>

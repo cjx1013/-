@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let map = new Map();
+        map.set('name', 'cjx');
+        map.set('change', function () {
+            console.log('我我我我');
+        });
+        let key = {
+            school: 'dongda'
+        };
+        map.set(key, ['苏州', '南京']);
+
+        //size
+        console.log(map.size);
+        //删除
+        map.delete('name');
+        //获取
+        console.log(map.get('change'));
+        console.log(map.get(key));
+        //清空
+        // map.clear();
+        for(let v of map){
+            console.log(v);
+        }
+    </script>
+</body>
+</html>

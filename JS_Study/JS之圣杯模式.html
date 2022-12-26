@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //圣杯模式解决共享原型问题
+        function Super() {
+            this.name = 'Mr.Li';
+            this.tSkill = 'JAVA';
+        }
+        Super.prototype = {
+            pSkill: 'JS/JQ'
+        }
+
+        var sup = new Super();
+        console.log(sup);
+
+        function Sub() {
+            this.name = 'Mr.Wang';
+        }
+        
+        // Sub.prototype = Super.prototype;
+        // Sub.prototype.age = 18;//这会导致修改sub的原型对象，而super的原型对象也发生了变化
+        //不管是sub的prototype还是super的prototype，他们都是一个对象，
+        //对象之间的赋值是地址的传递。所以当我们改变sub原型上的属性时，Super原型也会被修改。
+        //因为sub.prototype = super.prototype这句话使他们指向了一个内存空间
+
+        //声明一个中间函数
+        function buffer() {};
+        buffer.prototype = Super.prototype;//让buffer原型对象具有跟Super原型对象一样的级别，那么buffer实例就是Super原型对象的孩子
+        var buf = new buffer();
+        Sub.prototype = buf;//sub的原型对象赋值为buf实例，而buf实例又是Super原型对象的孩子,所以sub实例变为buffer函数对象的孩子
+        //从而sub实例成为Super原型对象的孙子
+        Sub.prototype.age = 18;//新增一个年龄属性,但是不会导致Super的原型对象发生改变,只会让中间的buffer改变，解决共享原型问题
+        var sub = new Sub();
+        console.log(sub);
+        // console.log(buf);
+       
+    </script>
+</body>
+</html>

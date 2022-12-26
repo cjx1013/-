@@ -1,0 +1,11 @@
+.icon-success {
+  background-image: url(../images/success);
+}
+
+.icon-error {
+  background-image: url(../images/error);
+}
+
+.icon-warning {
+  background-image: url(../images/warning);
+}

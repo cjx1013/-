@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const school = {
+            name: 'cjx',
+            cities: ['北京', '上海', '深圳'],
+            subject: ['java', '大数据', '前端']
+        };
+
+        //获取对象所有的键
+        console.log(Object.keys(school));
+        //获取对象所有的值
+        console.log(Object.values(school));
+        //entries,输出一个数组，数组元素还是数组，元素里面的值为[键，值]
+        console.log(Object.entries(school));
+        //Object.entries(school)可以这样用
+        const m = new Map(Object.entries(school));
+        console.log(m.get('cities'));
+
+        //对象属性的描述对象
+        console.log(Object.getOwnPropertyDescriptors(school));//如name描述对象：writeable（可写）configurable（可配置）
+    </script>
+</body>
+</html>

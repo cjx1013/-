@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--
+        computed和watch之间的区别：
+            1、computed能完成的功能，watch都可以完成
+            2、watch能完成的功能，computed不一定能完成，例如：watch可以进行异步操作
+        两个重要的原则
+            1、被Vue所管理的函数，最好写成普通函数，这样this的指向才是vm或组件实例对象
+            2、所有不被Vue所管理的函数（定时器的回调函数，Ajax的回调函数，promise的回调函数等），
+            最好写成箭头函数，这样this的指向才是vm或组件实例对象
+    -->
+    <div id="root">
+        姓:<input type="text" v-model="firstName"><br>
+        名:<input type="text" v-model="lastName"><br>
+        全名:<span>{{fullName}}</span>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                firstName: '张',
+                lastName: '三',
+                fullName: '张-三'//使用监听属性时，需要添加fullName属性
+            },
+            //计算属性
+            // computed: {
+            //     //简写形式
+            //     fullName() {
+            //         return this.firstName + '-' + this.lastName;
+            //     }
+            // },
+
+            //computed执行异步操作
+            // computed: {
+            //     //简写形式
+            //     fullName() {
+            //          setTimeout(() => {
+            //              return this.firstName + '-' + this.lastName;
+            //          }, 1000);
+                    //你会发现fullName并没有返回值，因为setTimeout里的返回值
+                    //其实是setTimeout函数的，而计算属性get方法（这里是简写，fullName就是get方法）
+                    //需要返回值，所以达不到效果
+            //     }
+            // },
+            // 监听属性
+            watch: {
+                //简写形式，监听firstName和lastName
+                firstName(newValue, oldValue) {
+                    //例如设置定时器，模拟异步操作，watch可以进行
+                    //而且setTimeout是不被Vue管理的，要写成箭头函数，
+                    //不然写成setTimeout:function()时this就是window了，
+                    //而不是vm了，而写成箭头函数，其本身没有this，所以
+                    //会往外层找，从而找到vm
+                    // setTimeout(() => {
+                    //     this.fullName = newValue + '-' + this.lastName;
+                    // }, 1000);
+                    this.fullName = newValue + '-' + this.lastName;
+                },
+                lastName(newValue, oldValue) {
+                    this.fullName = this.firstName + '-' + newValue;
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

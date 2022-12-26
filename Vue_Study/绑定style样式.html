@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--
+            写法一：
+            :style="{fontSize: xxx}"其中xxx是动态值
+        -->
+        <div :style="{fontSize: fsize + 'px'}">123</div>
+        <div :style="styObj1">123</div>
+        <!--
+            写法二：
+            :style="[a,b]"其中a、b是样式对象
+        -->
+        <div :style="[s1, s2]">456</div>
+        <div :style="styArr">456</div>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                fsize: 50,
+                styObj1: {
+                    fontSize: '40px',
+                    color: 'red'
+                },
+                s1: {
+                    backgroundColor: 'green'
+                },
+                s2: {
+                    color: 'skyblue'
+                },
+                styArr: [
+                    {
+                        fontSize: 60
+                    },
+                    {
+                        color: 'hotpink'
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

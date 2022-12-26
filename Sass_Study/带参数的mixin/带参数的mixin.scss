@@ -1,0 +1,14 @@
+@mixin myColor($c, $backColor) {
+    background-color: $backColor;
+    a{
+        color: $c;
+    }
+}
+
+.class1{
+    @include myColor(pink, hotpink);
+}
+
+.class2{
+    @include myColor($backColor: blue, $c: skyblue);
+}

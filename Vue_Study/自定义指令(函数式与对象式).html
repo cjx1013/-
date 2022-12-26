@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--
+        需求1：定义一个v-big指令，和v-text功能类似，但会把绑定的数值放大10倍
+        需求2：定义一个v-fbing指令，和v-bind功能类似，但可以让其所绑定的input元素默认获取焦点
+    -->
+    <div id="root">
+        <h3>欢迎{{name}}</h3>
+        <h3>当前n的值: <span v-text="n"></span></h3>
+        <h3>放大10倍后n的值: <span v-big="n"></span></h3>
+        <button @click="n++">点击n++</button><br>
+        <input type="text" v-fbind:value="n">
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                name: 'cjx',
+                n: 99
+            },
+            directives:{
+                //函数式
+                //big函数何时会被调用？
+                //1、指令与元素成功绑定时（也就是一上来），绑定失败就是可能标签写错了，v-big指令写错了
+                //2、指令所在的模板被重新解析时，比如我在控制台的Vue修改name，big函数也会被调用
+                //因为你修改了name，模板也会被重新解析，无论你改的是name，还是n值，都会引起
+                //模板的重新解析，就会给你调用big函数
+                big(element, binding) {
+                    //参数1，element是你要操作的真实DOM元素
+                    //参数2，binding是绑定对象，就是v-big和span进行绑定
+                    //binding对象中包含了与绑定相关的一些属性
+                    // console.log(element);
+                    // console.log(binding);
+                    // console.log('我被调用了');
+                    element.innerHTML = binding.value * 10;
+                },
+                // fbind(element, binding){
+                    //如果写成函数式，那么并不会在页面加载完后立马获取焦点
+                    //因为Vue的工作有个流程，先是指令与元素绑定，然后再把元素插入到页面
+                    //而你需要知道一点，
+                    //像什么修改样式，背景颜色之类的可以写在元素插入到页面，
+                    //但是focus，获取父元素之类的要等元素插入到页面后再调用才有用
+                    //所以在这里页面加载完后并不会立马获取焦点，在重新解析模板之后才会自动获取焦点
+                    //所以要想页面加载完后立马获取焦点并不能将其写成函数式，要写成对象式，
+                    //对象式分的更细
+                    // element.value = binding.value;
+                    // element.focus();
+                // }
+                fbind:{
+                    // 指令与元素成功绑定时（也就是一上来）
+                    bind(element, binding) {
+                        element.value = binding.value;
+                    },
+                    //元素插入到页面后
+                    inserted(element, binding) {
+                        element.focus();
+                    },
+                    // 指令所在的模板被重新解析时
+                    update(element, binding) {
+                        element.value = binding.value;
+                        //可以解析模板后保持获取焦点状态
+                        // element.focus();
+                    }
+                    //所以函数式实际上是对象式的bind和update的简写
+                }
+            }
+        })
+    </script>
+</body>
+</html>

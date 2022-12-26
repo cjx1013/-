@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+            width: 350px;
+            height: 580px;
+            border: 1px solid red;
+            margin: 200px;
+            overflow: hidden;/*溢出部分隐藏*/
+        }
+        section img{
+            transition: all 0.2s;/*因为图片缩放了
+            实际图片做动画，所以transition给img
+            总之就是谁做动画，谁加transition*/
+        }
+        section:hover img{/*鼠标经过section后，img缩放*/
+            /*transform(x,y);x 水平缩放 y 垂直缩放 如果只写一个参数 宽度和高度都缩放*/
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <section><img src="watch.png" alt=""></section>
+</body>
+</html>

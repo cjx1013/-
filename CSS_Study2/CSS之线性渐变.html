@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .jian{
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+        }
+        .jianbian1{
+            background-image: linear-gradient(to top,red 50%,green 100%);/*这表示从下往上由绿色向红色渐变，
+            后面百分数表示红色从到达高度50%才开始渐变，到100%渐变完成*/
+        }
+        .jianbian2{
+            background-image: linear-gradient(60deg,red 50px,green 100px,purple 100%);
+            /*第一个参数也可以使角度，表示从60度的方向开始渐变，颜色后面的参数也可以是长度单位px，表示从多少px开始渐变*/
+        }
+    </style>
+</head>
+<body>
+    <div class="jianbian1 jian"></div>
+    <div class="jianbian2 jian"></div>
+</body>
+</html>

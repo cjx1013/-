@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .slider-bar {
+            width: 50px;
+            height: 100px;
+            background-color: aquamarine;
+            position: absolute;
+            right: 119px;
+            top: 415px;
+        }
+
+        .goBack {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: none;
+            cursor: pointer;
+        }
+
+        .header {
+            height: 300px;
+            background-color: pink;
+        }
+
+        .banner {
+            height: 200px;
+            background-color: hotpink;
+        }
+
+        .main {
+            height: 1000px;
+            background-color: skyblue;
+        }
+
+        .w {
+            width: 80%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+    <script>
+        var slider = document.querySelector('.slider-bar');
+        var banner = document.querySelector('.banner');
+        //页面滚动事件
+        var bannerHeight = banner.offsetTop;
+        //2、然后，当页面滚动后，侧边栏变固定定位时会弹一下，这是因为slider-bar设置了top值，会弹到top:415px的位置
+        //这时就需要将侧边栏的top减掉bannerHeight的值，才不会出现弹一下的情况
+        var sliderTop = slider.offsetTop - bannerHeight;
+        //当页面滚动到主体部分时，显示span中的内容
+        var main = document.querySelector('.main');
+        var goBack = document.querySelector('.goBack');
+        var mainTop = main.offsetTop;
+        document.addEventListener('scroll', function () {
+            //window.pageYOffset 页面被卷去的头部
+            //1、当页面被卷去的头部大于某个数值，这里我们让页面被卷去的头部大于等于banner的高度就让它变为固定定位
+            if (window.pageYOffset >= bannerHeight) {
+                slider.style.position = 'fixed';
+                slider.style.top = sliderTop + 'px';
+            } else {
+                //向上滚回去的时候设置为原始状态
+                slider.style.position = 'absolute';
+                slider.style.top = '415px';
+            }
+            //当页面滚动到主体部分时，显示span中的内容
+            if (window.pageYOffset >= mainTop) {
+                goBack.style.display = 'block';
+            } else {
+                goBack.style.display = 'none';
+            }
+        })
+        goBack.addEventListener('click', function() {
+            animate(window, 0);
+        })
+        //这里实现上下滚动，所以将之前的动画函数animate的左右移动改为上下移动
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var step = (target - obj.pageYOffset) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (obj.pageYOffset == target) {
+                    clearInterval(obj.timer);
+                }
+                if (callback) {
+                    callback();//调用函数
+                }
+                //上下滚动到窗口指定的位置用window.scroll(x,y);
+                window.scroll(0, window.pageYOffset + step)  ;
+            }, 15);
+
+        }
+    </script>
+</body>
+
+</html>

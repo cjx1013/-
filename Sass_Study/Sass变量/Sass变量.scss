@@ -1,0 +1,10 @@
+$myColor: red;
+$border: 1px solid $myColor;
+
+.class1{
+    background-color: $myColor;
+}
+
+.class2{
+    border: $border;
+}

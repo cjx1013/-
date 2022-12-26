@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .items{
+            width: 100px;
+            height: 100px;
+            border: 1px solid pink;
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h3>点击切换颜色</h3><hr>
+    <div class="items"></div>
+    <div class="items"></div>
+    <div class="items"></div>
+    <script>
+        var items = document.getElementsByClassName('items');
+        // for(var i = 0; i < items.length; i++){
+            // items[i].onclick = function () {
+                // this.style.backgroundColor = 'skyblue';//我们通常这样写，但是
+                // items[i].style.backgroundColor = 'skyblue';//为什么这样写会报错呢，
+                //因为for循环里面是块级作用域，所以var定义的变量i实际上是全局作用域
+                //通过for循环，给每个item绑定点击事件后i会变成自增变成3，这时如果触发点击事件，
+                //i为3，而数组下标最大为2，所以会数组下标会越界，报错
+                //此时如果用let来定义i，就不会存在这个问题，因为let定义的变量，es6引入块级作用域，
+                //for循环里面是个块级作用域，而不是全局变量
+            // }
+        // }
+        // console.log(i);//var定义的变量i，实际上是全局变量，因为没有块级作用域
+        for(let i = 0; i < items.length; i++){
+            items[i].onclick = function () {
+                items[i].style.backgroundColor = 'skyblue';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .spinner{
+            width: 50px;
+            height: 60px;
+            margin: 100px auto;
+            font-size: 10px;
+            text-align: center;
+        }
+        .spinner>div{
+            display: inline-block;
+            width: 6px;
+            height: 100%;
+            background-color: #67CF22;
+            animation: mymove 1.2s ease-in-out infinite;
+        }
+
+        .spinner>div:nth-child(1){
+            animation-delay: 0s;
+        }
+        .spinner>div:nth-child(2){
+            animation-delay: 0.1s;
+        }
+        .spinner>div:nth-child(3){
+            animation-delay: 0.2s;
+        }
+        .spinner>div:nth-child(4){
+            animation-delay: 0.3s;
+        }
+        .spinner>div:nth-child(5){
+            animation-delay: 0.4s;
+        }
+        @keyframes mymove{
+            0%,50%,100%{
+                transform: scaleY(0.4);
+            }
+            20%{
+                transform: scaleY(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

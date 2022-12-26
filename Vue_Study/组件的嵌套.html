@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+    </div>
+    <script>
+        const student = Vue.extend({
+            template:`
+                <div>
+                    <h3>{{name}}</h3>    
+                </div>
+            `,
+            data() {
+                return {
+                    name: 'cjx'
+                }
+            }
+        })
+        const school = Vue.extend({
+            template:`
+                <div>
+                    <student></student>    
+                </div>
+            `,
+            data() {
+                return {
+                    name: '东大'
+                }
+            },
+            components: {
+                student
+            }
+        })
+        const hello = Vue.extend({
+          template:`
+            <div>
+                <h3>你好啊！</h3>    
+            </div>
+          `,
+        })
+        const app = Vue.extend({
+            template:`
+                <div>
+                    <hello></hello>
+                    <school></school>
+                </div>
+            `,
+            components: {
+                hello,
+                school
+            }
+        })  
+        new Vue({
+            //我甚至连<app></app>都懒得写在root里
+            // 在下面写
+            template:`
+                <div>
+                    <app></app>
+                </div>
+            `,
+            el: '#root',
+            components: {
+                app
+            }
+            
+        })
+    </script>
+</body>
+</html>

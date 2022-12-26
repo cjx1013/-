@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            background-color: skyblue;
+            width: 400px;/*父级盒子有时候不指定height，因为有时存在子盒子的内容很多，
+            如果固定了父级盒子的高度，会导致有些内容看不到，不设置height，那么由于它的两个
+            子盒子是标准流，会自动撑开父级盒子*/
+            /* overflow: hidden; */
+        }
+        .left{
+            background-color: pink;
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+        .right{
+            background-color: hotpink;
+            width: 150px;
+            height: 200px;
+            float: left;
+        }
+        .box2{
+            width: 400px;
+            height: 200px;
+            background-color: aqua;
+        }
+        .clear{
+            clear: both;/*清除浮动*/
+        }
+        .clearfix:after{
+            content: ".";/*内容为小点，尽量加不要空，否则旧版本浏览器有空隙*/
+            display: block;/*转换为块级元素*/
+            height: 0;/*高度为0*/
+            visibility: hidden;/*隐藏盒子*/
+            clear: both;/*清除浮动*/
+        }
+        .clearfix{/*IE6,7浏览器的处理方式*/
+            *zoom:1;/*  “*”代表IE6,7能识别的特殊符号
+            带有这个*的属性，只有IE6,7才执行，zoom就是IE6,7清除浮动的方法*/
+        }
+    </style>
+</head>
+<body>
+    <div class="box1 clearfix">
+        <div class="left"></div>
+        <div class="right"></div>
+        <!--在浮动盒子后面添加一个空盒子-->
+        <!-- <div class="clear"></div> -->
+    </div>
+    <div class="box2"></div>
+</body>
+</html>

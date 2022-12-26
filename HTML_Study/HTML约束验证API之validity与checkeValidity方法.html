@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    <!--自定义叉号-->
+    input[type="search"]::-webkit-search-cancel-button{
+        -webkit-appearance: none;/*让这个叉号不显示*/
+        height: 15px;
+        width: 15px;
+        background-color: red;
+    }
+</style>
+<body>
+    <form action="">
+        <input type="text" id="username" value="13654" required maxlength="5" minlength="2" pattern="^\d{5}">
+        <input type="email" id="email" value="sadfa">
+        <input type="search" id="search" value=""><!--输入内容时，文本框右
+            端会有个×号，用于清空内容，一个小知识点：自定义这个叉号的样式-->
+        <input type="number" id="numbers" max="5" min="3" value="1" step="3"><!--max和min表示输入的上下限，step表示点击右侧上下箭头一次性增加三，减三-->
+        
+        <input type="submit">
+    </form>
+</body>
+<script>
+    // console.log(document.getElementById("username")===username);这两个是相等的，但是不推荐直接写id
+    //第一个是因为后面的写法是html5新的特性，可能会发生浏览器不兼容的情况，第二个就是不容易维护，
+    // 容易发生重名,下面为了简单，先用这种不推荐的
+    console.log(username.validity);
+    console.log(email.validity);
+    if(email.checkValidity()){
+        alert("邮箱符合")
+    }else{
+        alert("邮箱不符合")
+    }
+</script>
+</html>

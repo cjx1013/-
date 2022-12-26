@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<title>thead，tbody，tfoot</title><!--thead，tbody，tfoot在table中不是必须的，只是这样做便于后期的js代码的编写-->
+	</head>
+	<body>
+	<!--注意事项:
+		1、row合并的时候，删除“下面的”单元格
+		2、col合并的时候，对删除哪个没有要求
+	-->
+		<table border="1px" width="50%">
+			<thead>
+				<tr>
+					<!--th标签也是单元格标签，比td多的是居中，加粗-->
+					<th>员工编号</th>
+					<th>员工薪资</th>
+					<th>部门名称</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>4</td>
+					<td>5</td>
+					<td rowspan="2">6</td><!--合并两行-->
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>8</td>
+					<!--<td>9</td>-->
+				</tr>
+			</tfoot>
+		</table>
+		
+		
+	</body>
+</html>

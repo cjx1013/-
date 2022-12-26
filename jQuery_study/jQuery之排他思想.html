@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery.min.js"></script>
+</head>
+<body>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <script>
+        //原生JS中的排他思想是通过for循环干掉所有人，再留下自己
+        //而jQuery中有隐式迭代，所以就不用for循环了
+        $(function(){
+            //隐式迭代
+            $("button").click(function() {
+                //干掉所有人除了自己，因为siblings这个方法就是找到它的兄弟，不包含自己
+                $(this).siblings("button").css("background", "");
+                //再让自己变化
+                $(this).css("background", "orange");
+            })
+        })
+    </script>
+</body>
+</html>

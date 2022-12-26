@@ -1,0 +1,18 @@
+#father {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  background-color: pink;
+}
+#father .class1 {
+  width: 50px;
+  height: 60px;
+  margin: 20px auto;
+  background-color: skyblue;
+}
+#father .class2 {
+  width: 60px;
+  height: 70px;
+  margin: 20px auto;
+  background-color: skyblue;
+}

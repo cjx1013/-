@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+          //优点：解决了组合继承的问题，缺点：Sub函数的原型对象被重写了，导致自身的属性和方法没了，且存在兼容性问题，ES5版本以上,圣杯模式可以解决
+        function Super() {
+            this.a = [1, 2, 3, 4];
+        }
+        Super.prototype.say = function() {
+            console.log('222');
+        }
+
+        function Sub() {
+            Super.call(this);
+        }
+        Sub.prototype.subSay = function() {
+            console.log('333');
+        }
+        //兼容性处理
+        if(!Object.create){
+            Object.create = function (proto) {
+                function F(){};
+                F.prototype = proto;
+                return new F();
+            }
+        }
+        Sub.prototype = Object.create(Super.prototype);//返回一个对象，指定对象原型为传入的参数
+        var sub1 = new Sub();
+        var sub2 = new Sub();
+        sub1.a.push(5);
+        console.log(sub1.a);
+        console.log(sub2.a);
+        sub1.say();
+        // sub1.subSay();报错
+    </script>
+</body>
+</html>

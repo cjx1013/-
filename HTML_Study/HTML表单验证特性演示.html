@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML表单验证特性演示</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data" <!--novalidate--><!--novalidate表示表单提交时不验证-->
+        <input type="file">
+        <label for="">用户名</label>
+        <input type="text" name="username" placeholder="请输入用户名" required autofocus autocomplete="on"> <!--required表示为必填项,autofocus
+            也可以写成autofocus="autofocus"表示刷新页面是自动聚焦这个输入的文本框,autocomplete="on"表示类似记住密码的功能，输入时会有以前的记录可选
+        autocomplete="off"表示关掉该功能-->
+
+        <label for="">工号</label>
+        <input type="text" name="gonghao" placeholder="请输入工号" pattern="^\d{5}[imooc]$"><!--pattern表示使用的正则表达式，这里是开头为5为数字，后面英文字母
+            为imooc其中一个-->
+        <input type="text" list="tips"> <!--表示一个下拉选项，也可以输入一个内容，显示包含该内容的内容，如输入a，则显示包含a的内容可选-->
+        <datalist id="tips">
+            <option value="absc"></option>
+            <option value="absssc"></option>
+            <option value="abeec"></option>
+            <option value="abshhh"></option>
+        </datalist>
+        
+        <label for="man">男</label><!--label标签中的for属性的效果，在这里就是点击label的“男”的文字后面的单选框也会被选上，当然直接点单选框也是可以-->
+        <input type="radio" name="sex" id="man" required>
+        <label for="woman">女</label>
+        <input type="radio" name="sex" id="woman" required>
+
+        <input type="submit" value="提交1">
+        <input type="submit" value="提交2" formnovalidate><!--formnovalidate设置在提交按钮上，也表示表单提交时不验证-->
+
+    </form>
+</body>
+</html>

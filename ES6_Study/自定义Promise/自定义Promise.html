@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./promise(class版本实现).js"></script>
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve, reject)=>{
+            // setTimeout(() => {
+            //     resolve('ok')
+            //     // reject('error')
+            // }, 1000);
+            throw 'error'
+        })
+        // let p2 = Promise.resolve('ok')
+        // let p3 = Promise.resolve(new Promise((resolve, reject)=>{
+        //     resolve('123')
+        // }))
+        // let p4 = Promise.resolve(Promise.resolve('111'))
+        
+        // let result = Promise.race([p2, p3, p4])
+        // p.then(value=>{
+        //     console.log(value);
+        //     // return '123'
+        // }, reason=>{
+        //     console.log(reason);
+        // }) 
+
+        // p.then(value=>{
+        //     console.log(value);
+        // }).then(value=>{
+        //     console.log(value);
+        // }).catch(reason=>{
+        //     console.warn(reason);
+        // })
+
+        // p.catch(reason=>{
+        //     console.log(reason);
+        // })
+        // console.log(result);
+
+        // then的回调应该异步执行，执行结果应该是111,333,222
+        // 222得等111和333这两个同步任务执行后再执行
+        // 所以在自己封装的promise中通过setTimeout在表现上达到异步的目的
+        let p1 = new Promise((resolve, reject)=>{
+            resolve('ok')
+            console.log(111);
+        })
+
+        p1.then(value=>{
+            console.log(222);
+        })
+
+        console.log(333);
+    </script>
+</body>
+</html>

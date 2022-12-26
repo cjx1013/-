@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.27.2/axios.min.js"></script>
+</head>
+<body>
+    <button class="get">get</button>
+    <button class="post">post</button> 
+
+    <script>
+        var get = document.querySelector('.get');
+        var post = document.querySelector('.post');
+        get.addEventListener('click', function() {
+            axios.get('http://127.0.0.1/api/get?name=zs&age=18').then(response=>{
+                console.log(response.data);
+            })
+        })
+        post.addEventListener('click', function() {
+            axios.post('http://127.0.0.1/api/post', {
+                name: 'zs',
+                age: 18
+            }).then(response=>{
+                console.log(response.data);
+            })
+        })
+
+    </script>
+</body>
+</html>

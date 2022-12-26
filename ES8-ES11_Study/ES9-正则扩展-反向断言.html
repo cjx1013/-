@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //断言,可以根据目标前后内容来对目标进行唯一性的识别
+        let str = 'JS5211314你知道么555啦啦啦';
+        //正向断言
+        const reg = /\d+(?=啦)/; //后面是"啦"字的目标数字
+        const result = reg.exec(str);
+        console.log(result);
+
+        //反向断言
+        const reg1 = /(?<=么)\d+/;//前面是"么"字的数字
+        const result1 = reg.exec(str);
+        console.log(result1);
+    </script>
+</body>
+</html>

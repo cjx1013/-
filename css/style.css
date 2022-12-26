@@ -1,0 +1,328 @@
+*{
+    margin: 0;  /*清除内外边距*/
+    padding: 0;
+}
+body{
+    background-color: #f3f5f7;
+}
+ul{
+    list-style: none;/*去掉列表样式小点*/
+}
+.clearfix:after,.clearfix::before{/*清除浮动*/
+    content: "";
+    display: table;
+}
+.clearfix:after{
+    clear: both;
+}
+.clearfix{
+    *zoom:1;
+}
+a{
+    text-decoration: none;
+    color: #050505;
+}
+.container{
+    width: 1200px;
+    margin: 0 auto;
+}
+input{
+    border: 0;/*所有的表单都不要边框*/
+    box-sizing: border-box;/*CSS3盒子模型，把padding和border都包含到width*/
+}
+/*页面头部分*/
+header{
+    height: 100px;
+    overflow: hidden;
+}
+nav{
+    width: 1366px;
+    height: 42px;
+    margin: 26px auto;
+}
+.logo{
+    float: left;
+}
+.navbar{
+    float: left;
+    height: 42px;
+    line-height: 42px;/*这个行高给了父亲，行高会继承*/
+    margin-left: 50px;
+}
+.navbar li{
+    float: left;
+}
+.navbar li a{
+    display: block;
+    padding: 0 8px;
+    height: 42px;
+}
+.navbar li a:hover{
+    border-bottom: 2px solid #00a4ff;
+}
+/*搜索框部分*/
+.search{
+    width: 410px;
+    height: 38px;
+    border: 1px solid #00a4ff;
+    float: right;
+}
+.search input[type=text]{
+    width: 360px;
+    height: 38px;
+    background-color: #f3f5f7;
+    padding-left: 20px;
+    outline: 0;
+}
+.search input[type=submit]{
+    width: 50px;
+    height: 38px;
+    background: #d9dce0 url(../CSS_Study/search.png) no-repeat center center;/*看样子是宽度50px+360px=410px，
+    文本框+搜索按钮正好等于搜索框部分的宽度，但是行内块元素在一行排列的
+    时候互相之间会有一条缝隙，所以会出现搜索按钮掉下来的情况，这时使用浮动
+    则不会出现缝隙*/
+    background-size: 20px;
+    float: right;
+}
+/*搜索框部分结束*/
+/*个人中心部分*/
+.personal{
+    float: right;
+    height: 42px;
+    line-height: 42px;
+    margin: 0 15px 0 35px;
+}
+.personal img{
+    margin: 0 8px;
+    vertical-align: middle;
+}
+/*个人中心结束*/
+/*banner start*/
+.banner{
+    height: 420px;
+    background-color: #00a6ff49;
+    position: relative;
+}
+.banner-in{
+    background:url(../CSS_Study/banner.png) no-repeat;
+    height: 420px;
+    background-size: cover;
+}
+.slidebar{
+    width: 190px;
+    height: 420px;
+    background: rgba(0, 0, 0, 0.3);
+    float: left;
+}
+.slidebar li a{
+    color: #fff;
+    font-size: 16px;
+    padding: 0 20px;
+    display: block;
+    height: 42px;/*单行垂直居中，很多情况下，有了行高可以不用给高度*/
+    line-height: 42px;
+}
+.slidebar li a:hover{
+    color: #00a4ff;
+}
+.slidebar li span{
+    float: right;
+    font-family: Arial;/*一般我们的符号都使用这个字体*/
+}
+.circle{
+    width: 180px;
+    height: 22px;
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    margin-left: -90px;
+}
+.circle li{
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.4);
+    float: left;
+    margin: 6px 8px;
+    border-radius: 50%;
+}
+.circle li:first-child{
+    margin-left: 25px;
+}
+.circle .current{
+    width: 20px;
+    background-color: #fff;
+    border-radius: 6px;
+}
+.timetable{
+    float: right;
+    width: 230px;
+    height: 300px;
+    background-color: #fff;
+    margin-top: 50px;
+}
+.timetable dd:last-child{
+    border: 0;
+}
+.timetable dt{
+    height: 50px;
+    background-color: #9bceea;
+    color: #fff;
+    letter-spacing: 2px;/*设置文字间距*/
+    line-height: 50px;
+    font-weight: 500;/*文字加粗，不要带单位！*/
+    text-align: center;
+    margin-bottom: 10px;
+    
+}
+.timetable  dd{
+    width: 193px;
+    height: 60px;
+    border-bottom: 1px solid #ccc;
+    margin: 0 auto;
+    padding-top: 10px;/*设置这个会撑大盒子，所以才有下一行代码*/
+    box-sizing: border-box;/*用CSS3盒模型，使border和padding都包含在width里*/
+}
+.timetable dd h4{
+    font-weight: normal;/*让粗体不加粗*/
+    font-size: 16px;
+    color: #4e4e4e;
+}
+.timetable dd p{
+    color: #a5a5a5;
+    font-size: 14px;
+}
+.timetable dd a{
+    display: block;
+    color: #00a4ff;
+    border:1px solid #00a4ff;
+    height: 38px;
+    text-align: center;
+    line-height: 38px;
+    font-weight: 700;
+    transition: all 0.5s;
+}
+.timetable dd a:hover{
+    background-color: #00a4ff;
+    color: #fff;
+}
+/*banner end*/
+.recommend{
+    height: 60px;
+    line-height: 60px;
+    background-color: #fff;
+    margin-top: 8px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+.recommend a{
+    padding: 0 30px;
+    border-right: 1px solid #ccc;
+}
+.recommend a:first-child,.recommend a:last-child{
+    color: #00a4ff;
+}
+.recommend a:last-child{
+    border: 0;
+    font-size: 14px;
+    float: right;
+}
+.recommend a:hover{
+    color: #00a4ff;
+}
+.recom-product{
+    margin-top: 35px;
+}
+.recom-hd{
+    height: 40px;
+}
+.recom-hd h4{
+    float: left;
+    color: #494949;
+}
+.recom-hd a{
+    float: right;
+    line-height: 40px;
+    margin-right: 30px;
+    font-size: 14px;
+    color: #a5a5a5;
+}
+.recom-hd a:hover{
+    color: #00a4ff;
+}
+.recom-bd li{
+    width: 228px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 6px;
+    float: left;
+    margin-right: 15px;
+    margin-top: 15px;
+    transition: all 0.2s;
+}
+.recom-bd li:hover{
+    margin-top: 10px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+.recom-bd li:nth-child(5n){/*代表第5，10,15……个*/
+    margin-right: 0;
+
+}
+.recom-bd li h5,.recom-bd li p{
+    padding: 0 20px 0 24px;
+    margin-top: 12px;
+}
+.recom-bd li h5{
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 22px;/*文字的行间距*/
+}
+.recom-bd li p{
+    font-size: 12px;
+    color: #999;
+}
+.recom-bd p span{
+    color: #ff7c2d;
+}
+/*页面底部分*/
+footer{
+    height: 270px;
+    background-color: #fff;
+    margin-top: 30px;
+}
+.foot-in{
+    padding-top: 20px;
+}
+.foot-l{
+    float: left;
+}
+.foot-l p{
+    font-size: 12px;
+    color: #ccc;
+    margin-top: 20px;
+    line-height: 16px;
+}
+.foot-l a{
+    display: block;
+    height: 40px;
+    width: 100px;
+    border: 1px solid #00a4ff;
+    color: #00a4ff;
+    text-align: center;
+    line-height: 40px;
+    margin-top: 20px;
+}
+.foot-r{
+    float: right;
+    color: #333;
+}
+.foot-r dl{
+    float: right;
+    width: 200px;
+
+}
+.foot-r dt{
+    font-size: 16px;
+
+}
+.foot-r dd{
+    font-size: 12px;
+}

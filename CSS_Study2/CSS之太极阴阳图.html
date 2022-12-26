@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #ccc;
+        }
+        .yinyang{
+            width: 150px;
+            height: 300px;
+            border-radius: 50%;
+            margin: 200px auto;
+            position: relative;
+            background-color: #fff;
+            border-left: 150px solid #000;
+        }
+        .yinyang::before{
+            content: "";
+            width: 0;
+            height: 0;
+            padding: 25px;
+            border: 50px solid #000;
+            position: absolute;
+            border-radius: 50%;
+            left: -75px;
+            top: 0px;
+            background-color: #fff;
+        }
+        .yinyang::after{
+            content: "";
+            width: 0;
+            height: 0;
+            padding: 25px;
+            border: 50px solid #fff;
+            background-color: #000;
+            border-radius: 50%;
+            position: absolute;
+            right: 75px;
+            bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="yinyang"></div>
+</body>
+</html>

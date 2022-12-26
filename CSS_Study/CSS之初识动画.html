@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            /*animation:动画名称 动画时间 运动曲线 何时开始 播放次数 是否反方向
+            动画名称是自定义的
+            infinite：次数为无限循环*/
+            animation: donghua 2s ease 0s infinite alternate ;
+        }
+        /*@keyframes 动画名称{} 定义动画*/
+        @keyframes donghua{
+            from{
+                transform: translateX(0);
+            }
+            to{
+                transform: translateX(600px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

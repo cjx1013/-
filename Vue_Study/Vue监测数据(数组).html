@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--遍历数组-->
+        <h2>人员列表</h2>
+        <button @click="updateMei">点击修改马冬梅信息</button>
+        <ul>
+            <li v-for="(item, index) in persons" :key="item.id">
+               {{index}}-{{item.name}}-{{item.age}}
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                persons:[
+                    {id: 1, name: '周杰伦', gender: '男', age: 30},
+                    {id: 2, name: '温兆伦', gender: '男', age: 28},
+                    {id: 3, name: '周冬雨', gender: '女', age: 18},
+                    {id: 4, name: '马冬梅', gender: '女', age: 29}
+                ],
+            },
+            methods: {
+                updateMei() {
+                    // this.persons[3].name = '马老师';//奏效
+                    // this.persons[3].gender = '男';//奏效
+                    // this.persons[3].age = '60';//奏效
+
+                    // this.persons[3] = {name: '马老师', gender: '男', age: '60'};//不奏效了
+                    //这是因为你这样改Vue监测不到，不同于Vue监测对象，通过setter和getter方法
+                    //Vue对于数组元素并没有setter和getter方法，Vue监测数组是通过数组的变更方法（能直接影响原数组的）
+                    //包括push,pop,shift,unshift,splice,sort,reverse
+                    //来进行监控的，你看filter，也是数组的方法，但是将数组过滤后的结果返回，
+                    //还有slice,concat等
+                    // 而不是直接改变数组，Vue对这些变更方法进行了包装，包装的操作就是第一步调用数组自身的变更方法
+                    //如push，pop方法（如果不调用这些数组本身原型上的方法那么就根本影响不了数组了），然后第二步
+                    //对模板重新进行解析，生成新的虚拟DOM，对比新旧虚拟DOM。再生成真实DOM，显示在页面上，才实现了
+                    //那么为什么 this.persons[3].name = '马老师';
+                    // this.persons[3].gender = '男';
+                    // this.persons[3].age = '60';
+                    //这些都奏效了呢，举例，this.persons[3].name,是什么，不正是对象的属性么
+                    //对对象属性进行更改，不是由setter和getter方法么，所以Vue能监测到，才能奏效
+                    //对数组的监测
+                    this.persons.splice(3, 1, {name: '马老师', gender: '男', age: '60'});
+                    //其实Vue.set()方法或者vm.$set()也可以达到这样的效果
+                    // Vue.set(this.persons, 3, {name: '马老师', gender: '男', age: '60'});
+                    // this.$set(this.persons, 3, {name: '马老师', gender: '男', age: '60'});
+
+                }   
+            }
+        })
+    </script>
+</body>
+</html>

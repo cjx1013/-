@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--
+        收集表单数据：
+            若：<input type="text"/>，则v-model收集的是value值，用户输入的就是value值
+            若：<input type="radio"/>，则v-model收集的是value值，且要给标签配置value值
+            若：<input type="checkbox"/> 
+                1、没有配置input的value属性，那么收集的就是checked（勾选 or 未勾选，是布尔值）
+                2、配置input的value属性
+                    （1）v-model的初始值的非数组，那么收集的就是checked（勾选 or 未勾选，是布尔值）
+                    （2）v-model的初始值的数组，那么收集的就是value值组成的数组
+            备注：v-model的三个修饰符
+                    lazy：失去焦点再收集数据
+                    number：输入字符串转为有效的数字
+                    trim：输入首尾空格过滤
+    -->
+    <div id="root">
+        <form @submit.prevent="demo"><!--表单提交事件demo，并且阻止表单提交的默认事件:跳转页面-->
+            <!--trim修饰符，获取内容时去掉字符串左右两边的空格-->
+            账号:<input type="text" v-model.trim="userInfo.username"><br>
+            密码:<input type="password" v-model="userInfo.pwd"><br>
+            <!--type=number使输入框只能输入数字,修饰符number,也就是v-model.number后面加个number
+            可以使输入的字符串转换为数字-->
+            年龄:<input type="number" v-model.number="userInfo.age"><br>
+            性别: 
+            男<input type="radio" name="sex" v-model="userInfo.sex" value="male">
+            女<input type="radio" name="sex" v-model="userInfo.sex" value="female"><br>
+            爱好:
+            学习<input type="checkbox" v-model="userInfo.hobby" value="study">
+            打游戏<input type="checkbox" v-model="userInfo.hobby" value="playGame">
+            睡觉<input type="checkbox" v-model="userInfo.hobby" value="sleep"><br>
+            所属校区
+            <select  v-model="userInfo.school">
+                <option value="">请选择校区</option>
+                <option value="beijing">北京校区</option>
+                <option value="shanghai">上海校区</option>
+                <option value="shenzhen">深圳校区</option>
+            </select>
+            <br>
+            其他信息:
+            <!--lazy修饰符，当失去焦点时再获取值，不用输入或更改一个就立马获取值-->
+            <textarea v-model.lazy="userInfo.other"></textarea><br>
+            <!--这里只要知道选没选，true还是false-->
+            <input type="checkbox" v-model="userInfo.agree">阅读并接受<a href="#">《用户协议》</a>
+            <button>提交</button>
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                userInfo: {
+                    username:'',
+                    pwd:'',
+                    age:'',
+                    sex:'male',
+                    //初始值能够影响v-model收集的数据，你设置初始值为数组，那么它收集的就是value构成的数组
+                    //数组的每个元素记录checkbox选中的value值你设置初始值为字符串，它收集的就是checked属性的值：true和false
+                    //这里hobby需要获取选中的value值，所以设置初始值为value
+                    // hobby:'',
+                    hobby:[],
+                    school:'beijing',
+                    other:'',
+                    agree:''
+                }
+            },
+            methods: {
+                demo() {
+                    console.log(JSON.stringify(this.userInfo));
+                }   
+            }
+        })
+    </script>
+</body>
+</html>

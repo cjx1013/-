@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function main(config) {
+            //获取对象的host,先得判断config，config.db,config.db.host是否存在
+            // const dbHost = config && config.db && config.db.host;
+            const dbHost = config?.db?.host;//表示如果config存在再获取db，db存在再获取host
+            console.log(dbHost);
+        }
+        main({
+            db:{
+                host: '127.0.0.1',
+                username: 'root'
+            },
+            cache: {
+                host: '111.0.0.0',
+                username: 'admin'
+            }
+        })
+    </script>
+</body>
+</html>

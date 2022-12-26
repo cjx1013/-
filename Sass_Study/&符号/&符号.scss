@@ -1,0 +1,23 @@
+.nav{
+    height: 100px;
+    ul{
+        margin: 0;
+        li{
+            float: left;
+            list-style: none;
+            padding: 5px;
+        }
+        a{
+            color: #000;
+        }
+        //用于伪类选择器
+        &:hover{
+            background-color: pink;
+        }
+    }
+    //引用父选择器
+    & &-text{
+        font-size: 15px;
+    }
+
+}

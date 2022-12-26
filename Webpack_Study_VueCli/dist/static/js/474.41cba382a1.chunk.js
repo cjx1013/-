@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwebpack_study_vuecli=self.webpackChunkwebpack_study_vuecli||[]).push([[474],{474:function(e,u,n){n.r(u),n.d(u,{default:function(){return a}});var t=n(252);const c={class:"home_title"};var r={name:"Home"};var a=(0,n(744).Z)(r,[["render",function(e,u,n,r,a,s){return(0,t.wg)(),(0,t.iD)("h2",c,"Home~~~")}]])}}]);
+//# sourceMappingURL=474.41cba382a1.chunk.js.map

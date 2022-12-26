@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        span{
+            display: block;
+            width: 200px;
+            height: 200px;
+            background-color: hotpink;
+            position: absolute;
+            top: 100px;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn800">走！span到800px的位置</button>
+    <button class="btn500">走！span到500px的位置</button>
+    <span></span>
+    <script>
+        //匀速动画：当前位置 + 固定长度
+        //缓动动画：当前位置 + 变化长度
+        var span = document.querySelector('span');
+        var btn500 = document.querySelector('.btn500');
+        var btn800 = document.querySelector('.btn800');
+        function animate(obj, target, callback) {//添加一个回调函数的形参，当计时器结束时再来返回调用这个函数
+            //利用公式获得一个变化步长:（目标位置 - 当前位置) / 10
+            //但是为了保证步长不出现小数，所以需要取整
+            //当步长为正值，表示前进，此时取整应该向上取整，因为假设走了8.1，那么如果取整8则往后退了
+            //当步长为负值，表示后退，此时取整应该向下取整，因为假设步长为-8.1，要走8.1的距离，
+            //如果向上取整为-8，则没有走出应走的距离
+            var step = (target - obj.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function() {
+                obj.style.left = obj.offsetLeft + step + 'px';
+                if(obj.offsetLeft == target){
+                    clearInterval(obj.timer);
+                }
+                if(callback){
+                    callback();//调用函数
+                }
+            }, 15);
+
+        }
+        btn500.addEventListener('click', function() {
+            animate(span, 500);
+        })
+        btn800.addEventListener('click', function() {
+            animate(span, 800, function() {
+                span.style.backgroundColor = 'skyblue';//当到达800px时变色
+            });
+        })
+    </script>
+</body>
+</html>

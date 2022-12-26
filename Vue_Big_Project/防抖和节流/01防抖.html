@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.js"></script>
+</head>
+<body>
+    <input type="text">
+    <script>
+        //防抖：前面的所有的触发都被取消，最后一次执行在规定的时间之后才会触发，也就是说如果连续快速的触发,只会执行最后一次
+        let input = document.querySelector('input')
+        
+        input.oninput = _.debounce(function() {
+            console.log('ajax请求');
+        }, 1000)
+        // input.oninput = function() {
+        //     console.log('ajax请求');
+        // }
+    </script>
+</body>
+</html>

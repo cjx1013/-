@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--
+        Vue中使用组件的三大步骤：
+            一、定义组件（创建组件）
+            二、注册组件
+            三、使用组件（写组件标签）
+        一、如何定义一个组件？
+            使用Vue.extend(options)创建，其中options和new Vue(options)时传入的那个options
+            几乎一样，但也有点区别：
+            区别如下：
+                1、el不要写，为什么？--最终所有的组件都要经过一个vm的管理，由vm中的el决定服务哪个容器
+                2、data必须要写成函数，为什么？--避免组件被复用时，数据存在引用关系
+            备注：使用template可以配置组件结构
+        二、如何注册组件？
+            1、局部注册：靠new Vue的时候传入components选项
+            2、全局注册：靠Vue.component('组件名',组件)
+        三、编写组件标签：
+            如<school></school>
+    -->
+    <!--以前的写法-->
+    <!-- 
+        <div id="root">
+            <h3>学校名称:{{school.name}}</h3>
+            <h3>学校位置:{{school.location}}</h3>
+            <hr>
+            <h3>学生名字:{{student.name}}</h3>
+            <h3>学生年龄:{{student.age}}</h3>
+        </div>
+     -->
+     <!--
+         <script>
+             new Vue({
+                 el: '#root',
+                 data: {
+                     school: {
+                         name: '东大',
+                         location: '江苏'
+                     },
+                     student: {
+                         name: 'cjx',
+                         age: 22
+                     }
+                 }
+             })
+         </script>
+     -->
+
+     <!--现在的写法-->
+     <div id="root">
+        <h3>{{msg}}</h3>
+        <!--第三步：使用组件-->
+        <hr>
+        <school></school>
+        <student></student>
+        <student></student><!--复用组件只需要写这样一个组件标签就行了
+        而且因为data写成了函数式，组件改变数据它们之间互不影响-->
+        <hello></hello>
+     </div>
+     <div id="root2">
+        <!--报错，因为这个student组件时局部注册的组件，这个Vue实例用不了-->
+        <!-- <student></student> -->
+        <!--这个可以被多个Vue实例使用，因为它是全局注册的组件-->
+        <hello></hello>
+     </div>
+     <script>
+        //第一步：创建组件
+        const school = Vue.extend({
+            //组件中不要写el配置项，因为这是vm的东西，最终所有的组件都要被一个vm管理，由vm决定服务于哪个容器
+            //之前root的结构，用template来代替，不过得在外面再加一个div
+            template: `
+                <div>
+                    <h3>学校名称:{{school.name}}</h3>
+                    <h3>学校位置:{{school.location}}</h3>
+                    <button @click="showName">点击显示学校名称</button>
+                </div>
+            `,
+            //data要写成函数式，不能写对象式，这是因为当多个组件使用data时，如果是对象，当其中一个组件
+            //改变了这个data，由于是对象，其他的组件使用的data都是指向着这个对象的，所以其他组件也会被改变了
+            //写成函数式，那么返回的是一个全新的对象，不是指向的同一个对象，组件之间互相不会受影响
+            data() {
+                return {
+                    school: {
+                        name: '东大',
+                        location: '江苏'
+                    }
+                }
+            },
+            methods: {
+                showName() {
+                    alert(this.school.name);
+                }   
+            }
+        })
+        const student = Vue.extend({
+            template: `
+                <div>
+                    <h3>学生名字:{{student.name}}</h3>
+                    <h3>学生年龄:{{student.age}}</h3>
+                </div>
+            `,
+            data() {
+                return {
+                    student: {
+                        name: 'cjx',
+                        age: 22
+                    }
+                }
+            },
+        })
+        const hello = Vue.extend({
+            template:`
+                <div>
+                    <h3>{{haha}}</h3>  
+                </div>
+            `,
+            data() {
+                return {
+                    haha:'haha'
+                }
+            },
+        })
+        //全局注册
+        Vue.component('hello',hello);
+        new Vue({
+            el: '#root',
+            data: {
+                msg: '你好啊'
+            },
+            //第二步：注册组件（局部注册）
+            components: {
+                // school: school,
+                // student: student
+                school,
+                student
+            }
+        })
+         
+        new Vue({
+            el: '#root2',
+            data: {
+            }
+        })
+     </script>
+</body>
+</html>

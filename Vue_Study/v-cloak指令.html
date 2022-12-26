@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*属性选择器*/
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        v-cloak指令（没有值）
+            1、本质是一个特殊属性，Vue实例创建完毕并接管容器后，会删掉v-cloak属性
+            2、使用css配合使用v-cloak可以解决网速慢时页面展示出{{xxx}}的问题
+    -->
+    <div id="root">
+        <h3 v-cloak>{{name}}</h3>
+    </div>
+    <!--假设我把引入vue.js放在这，且假设要经过5s才能引入成功，
+    那么，没有引入成功前，页面上会显示什么内容，没错，就是"{{name}}"
+    多难看，引入成功后，Vue才接管容器，为了防止这种情况，可以使用v-cloak指令搭配css使用-->
+    <script src="./js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                name: 'cjx'
+            }
+        })
+    </script>
+</body>
+</html>

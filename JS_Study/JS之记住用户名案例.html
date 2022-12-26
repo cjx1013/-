@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="uname">
+    <input type="checkbox" id="check">记住用户名
+    <script>
+        var txt = document.querySelector('#uname')
+        var check = document.querySelector('#check');
+        if(localStorage.getItem('uname')){
+            txt.value = localStorage.getItem('uname');
+            check.checked = true;
+        }
+        check.addEventListener('change', function() {
+            //change事件，当复选框状态发生改变时的事件
+            if(this.checked == 'true'){
+                //如果选中复选框，则将用户名存入localStorage
+                localStorage.setItem('uname',txt.value);
+            }else{
+                //不选中则删除localStorage中的用户名
+                localStorage.removeItem('uname');
+            }
+        })
+    </script>
+    
+</body>
+</html>

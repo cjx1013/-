@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: skyblue
+        }
+        div{
+            width: 400px;
+            height: 500px;
+            background: hotpink url(刘亦菲.jpeg) no-repeat;
+            /*background-size: cover;图片缩放时进行等比例缩放，会将宽度和高度同时充满盒子，
+            如果高度充满了，但是宽度没有充满盒子，这时仍会继续进行等比例缩放，所以有时会有部分图片看不到的情况*/
+            
+            background-size: contain;/*图片缩放时进行等比例缩放，但是当宽度和高度任何一个充满盒子了就停止缩放
+            所以有时会出现盒子有一部分露出来了*/
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

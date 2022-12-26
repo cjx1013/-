@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/animate.js"></script>
+    <style>
+        ul{
+            list-style: none;
+            width: 500px;
+            background-color: antiquewhite;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            height: 40px;
+            position: relative;
+        }
+        ul li{
+            line-height: 30px;
+            padding: 0 20px;
+            float: left;
+            background-color: bisque;
+            margin: 5px 3px 0 3px ;
+            cursor: pointer;
+        }
+        .cloud{
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 33px;
+            opacity: .5;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <img class="cloud" src="../images/cloud.gif"></img>
+        <li>盖伦</li>
+        <li>拉克丝</li>
+        <li>伊泽瑞尔</li>
+        <li>亚索</li>
+        <li>卡莎</li>
+    </ul>
+    <script>
+        var lis = document.querySelector('ul').children;
+        var cloud = document.querySelector('.cloud');
+        var current = 0;//记录当前位置
+        for(var i = 0; i < lis.length; i++){
+            lis[i].addEventListener('mouseenter', function() {
+                animate(cloud, this.offsetLeft + 33);
+            })
+            lis[i].addEventListener('mouseleave', function() {
+                animate(cloud, current);
+            })
+            lis[i].addEventListener('click', function() {
+                current = this.offsetLeft;
+            })
+        }
+    </script>
+</body>
+</html>

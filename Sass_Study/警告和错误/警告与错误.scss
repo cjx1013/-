@@ -1,0 +1,12 @@
+$colors: (light: #fff, dark: #000);
+
+@function color($key){
+    // @if not map-has-key($colors, $key){
+    //     @error "在$colors没有找到#{$key}这个key"
+    // }
+    @return map-get($colors, $key);
+}
+
+body{
+    background-color: color(gray);
+}

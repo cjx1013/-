@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+           margin: 300px; 
+           position: relative;/*子绝父相*/
+        }
+        /*鼠标经过在div前面插入一个伪元素*/
+        div:hover::before{
+            content: "";
+            display: block;
+            border: 10px solid rgba(255, 255, 255, .4);
+            width: 510px;
+            height: 360px;
+            position: absolute;/*设置绝对定位，行内元素转换为行内块元素*/
+            top: 0;
+            left: 0;
+            box-sizing: border-box;/*边距跟padding一样也会撑开盒子，
+            所以用CSS3盒模型，将border并到width里*/
+        }
+        div::before:hover{
+
+        }
+    </style>
+</head>
+<body>
+    <div><img src="computer.png" alt=""></div>
+</body>
+</html>

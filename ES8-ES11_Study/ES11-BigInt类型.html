@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //大整形
+        let n = 521n;
+        console.log(n, typeof(n));
+
+        //整形转换为大整形，
+        let n1 = 123;
+        console.log(BigInt(n1));
+        // console.log(BigInt(1.2));//报错，浮点数不能转换成大整形
+
+        //大整形主要用于大数值运算
+        let max = Number.MAX_SAFE_INTEGER;
+        console.log(max);
+        console.log(max + 1);
+        console.log(max + 2);//加不了了，到最大了
+
+        console.log(BigInt(max));
+        console.log(BigInt(max) + BigInt(1));//大整形和整形不能相加，大整形跟大整形才能运算
+        console.log(BigInt(max) + BigInt(2));//可以加，不跟上面一样到最大了
+    </script>
+</body>
+</html>

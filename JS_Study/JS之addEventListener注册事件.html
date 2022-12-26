@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>传统注册事件方式</button>
+    <button>方法监听注册方式</button>
+
+    <script>
+        //传统注册事件方式
+        var btns = document.querySelectorAll('button');
+        btns[0].onclick = function() {
+            alert('1');
+        }
+        btns[0].onclick = function() {
+            alert('2');//传统方式注册事件具有唯一性，同一元素同一事件
+            //只能设置一个处理函数，后面注册的事件会覆盖前面的注册
+        }
+
+        //方法监听注册方式
+        btns[1].addEventListener('click', function(){//而这种方式同一元素能注册多个监听器，结果两个都会弹出
+            alert('11');
+        })
+        btns[1].addEventListener('click', function(){
+            alert('22');
+        })
+
+    </script>
+
+</body>
+</html>

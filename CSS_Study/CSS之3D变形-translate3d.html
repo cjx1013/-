@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            perspective:600px;
+        }
+        /*让div浮上去的效果*/
+        div:first-child{
+            font-size: 40px;
+            transform: translate3d(0,50px,0);
+            transition: all 1s;
+        }
+        div:first-child:hover{
+            transform: translate3d(0,0,0);
+        }
+        div:nth-child(2){
+            width: 200px;
+            height: 200px;
+            margin: 200px auto;
+            background-color: pink;
+            transition: all 1s;
+        }
+        div:nth-child(2):hover{
+            /*transform: translate3d(x,y,z);
+            x和y可以是px，也可以是百分比，而z只能是px*/
+            transform: translate3d(100px,100px,300px);
+        }
+        
+    </style>
+</head>
+<body>
+    <div>我是一名学生</div>
+    <div></div>
+</body>
+</html>

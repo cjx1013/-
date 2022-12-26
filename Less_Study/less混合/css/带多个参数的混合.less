@@ -1,0 +1,18 @@
+.sonStyle(@w, @h){
+    width: @w;
+    height: @h;
+    margin: 20px auto;
+    background-color: skyblue;
+}
+#father{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background-color: pink;
+    .class1{
+        .sonStyle(50px, 60px);
+    }
+    .class2{
+        .sonStyle(60px, 70px);
+    }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //提取出电影名和上映日期
+        //dot . 元字符 除换行符以外的任意单个字符
+        let str = `
+            <ul>
+                <li>
+                    <a>肖生克的救赎</a>
+                    <p>上映日期: 1994-09-10</p>
+                </li>
+                <li>
+                    <a>阿甘正传</a>
+                    <p>上映日期: 1994-07-06</p>
+                </li>
+            </ul>`;
+        //之前的方式,\s是空白符，换行也是空白符
+        // const reg = /<li>\s+<a>(.*?)<\/a>\s+<p>(.*?)<\/p>/;
+        // const result = reg.exec(str);
+        // console.log(result);
+
+        //ES9 dotAll模式,在后面加个s后 . 就能匹配任意字符
+        //这样在正则匹配的时候如果字符串有很大间隙，空格，那么
+        //通过 .* 就都能通配了,在后面加个g表示全局匹配，就是如果不加
+        //就只能匹配一条，比如只能匹配肖生克的救赎和上映日期，但是
+        //加了g就能匹配所有的肖生克的救赎以及阿甘正传及上映日期
+        const reg1 = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/gs;
+        let result1;
+        let data = [];
+        while(result1 = reg1.exec(str)){
+            data.push({title: result1[1], time: result1[2]});
+        }
+        console.log(data);
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--遍历数组-->
+        <h2>人员列表</h2>
+        <button @click="updateMei">点击修改马冬梅信息</button>
+        <ul>
+            <li v-for="(item, index) in persons" :key="item.id">
+               {{index}}-{{item.name}}-{{item.age}}
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                persons:[
+                    {id: 1, name: '周杰伦', gender: '男', age: 30},
+                    {id: 2, name: '温兆伦', gender: '男', age: 28},
+                    {id: 3, name: '周冬雨', gender: '女', age: 18},
+                    {id: 4, name: '马冬梅', gender: '女', age: 29}
+                ],
+            },
+            methods: {
+                updateMei() {
+                    // this.persons[3].name = '马老师';//奏效
+                    // this.persons[3].gender = '男';//奏效
+                    // this.persons[3].age = '60';//奏效
+
+                    this.persons[3] = {name: '马老师', gender: '男', age: '60'};//不奏效了
+                    //问题的解决看Vue监测数据（数组）.html
+
+                }   
+            }
+        })
+    </script>
+</body>
+</html>

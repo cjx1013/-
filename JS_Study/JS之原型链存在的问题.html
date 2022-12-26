@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //问题：引用值共享的问题
+        //现在我想要通过sub1，来拿到a和say方法
+        function Super() {
+            // this.a = '111';//非引用值不受影响
+            this.a = [1, 2, 3, 4];
+        }
+        Super.prototype.say = function () {
+            console.log('222');
+        }
+
+        function Sub(){
+
+        }
+        Sub.prototype = new Super();
+        var sub1 = new Sub();
+        var sub2 = new Sub();
+        // sub1.a = '333';
+        sub1.a.push(5);//利用sub1对a进行修改
+        console.log(sub1.a);
+        console.log(sub2.a);//但是sub2获取a时受到了影响，这个a是直接从爷爷那拿的
+        sub1.say();
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            color: #000;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        ul{
+            list-style: none;
+        }
+        .nav{
+            height: 70px;
+            width: 288px;
+            margin: 200px auto;
+            border-bottom: 0;
+        }
+        .nav>li{
+            float: left;
+            line-height: 70px;
+            font-size: 14px;
+            color: #000;
+            padding: 0 20px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .nav li ul{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <li>
+            <a href="#">好东西</a>
+            <ul>
+                <li>服装</li>
+                <li>鞋子</li>
+                <li>帽子</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">好东西</a>
+            <ul>
+                <li>服装</li>
+                <li>鞋子</li>
+                <li>帽子</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">好东西</a>
+            <ul>
+                <li>服装</li>
+                <li>鞋子</li>
+                <li>帽子</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        var nav = document.querySelector('.nav');
+        var lis = nav.children;
+        for(var i = 0; i < lis.length; i++){
+            lis[i].onmouseover = function() {
+                this.children[1].style.display = 'block';
+            }
+            lis[i].onmouseout = function() {
+                this.children[1].style.display = 'none';
+            }
+        }
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Object.fromEntries,将二维数组转换为对象
+        const result = Object.fromEntries([
+            ['name', 'cjx'],
+            ['xueke', 'java,前端']
+        ]);
+        console.log(result);
+
+        //Object.entries ES8，将对象转换为数组
+        const arr = Object.entries({
+            name: 'cjx1'
+        })
+        console.log(arr);
+    </script>
+</body>
+</html>

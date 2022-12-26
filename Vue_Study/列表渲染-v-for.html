@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--
+        v-for指令
+            1、用于展示列表数据
+            2、语法：v-for="(item, index) in或of xxx" :key="yyy",其中key为每个item的唯一标识
+            3、可遍历：数组、对象、字符串（用的很少）、指定次数（用的很少） 
+    -->
+    <div id="root">
+        <!--遍历数组-->
+        <h2>人员列表（遍历数组）</h2>
+        <ul>
+            <li>姓名-性别</li>
+            <!--你可能会说data、computed里又没有item,index，怎么能通过
+            插值语法获取呢，其实插值语法获取的途径还有一个，就是现在的这个
+            v-for
+            遍历数组时，item就是数组元素（在这里数组的每个元素是对象，
+            index为数组下标
+            -->
+            <!-- <li v-for="(item, index) in persons" :key="item.id">{{item}}-{{index}}</li> -->
+            <li v-for="(item, index) in persons" :key="item.id">
+                {{item.name}}-{{index}}
+            </li>
+        </ul>
+
+        <!--遍历对象，item为属性值，index为属性名-->
+        <h2>个人信息</h2>
+        <ul>
+            <li>属性值-属性名</li>
+            <li v-for="(item, index) of obj" :key="index">
+                {{item}}-{{index}}
+            </li>
+        </ul>
+
+        <!--遍历字符串，item为每个字符，index为下标-->
+        <h2>字符串</h2>
+        <ul>
+            <li>每个字符-下标</li>
+            <li v-for="(item, index) of str" :key="index">
+                {{item}}-{{index}}
+            </li>
+        </ul>
+
+        <!--遍历指定次数，item从1开始，1,2,3……，index为下标-->
+        <h2>字符串</h2>
+        <ul>
+            <li>数值-下标</li>
+            <li v-for="(item, index) of 5" :key="index">
+                {{item}}-{{index}}
+            </li>
+        </ul>
+        
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                persons:[
+                    {   
+                        id: 1,
+                        name: '张三',
+                        gender: '男'
+                    },
+                    {
+                        id: 2,
+                        name: '李四',
+                        gender: '男'
+                    },
+                    {
+                        id: 3,
+                        name: '王五',
+                        gender: '女'
+                    }
+                    
+                ],
+                obj:{
+                    name: 'cjx',
+                    age: '18',
+                    gender: 'man'
+                },
+                str: 'asgasga'
+            }
+        })
+    </script>
+</body>
+</html>

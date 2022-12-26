@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <p></p>
+    <script>
+        var input = document.querySelector('input');
+        var p = document.querySelector('p');
+        //声明handle函数
+        function handle(data){
+            input.style.border = '1px solid #f00';
+            p.innerHTML = data.msg;
+        }
+        input.onblur = function () {
+            var script = document.createElement('script');
+            //用script标签向服务端发送请求，服务端返回的结果是一个handle函数的调用
+            //浏览器解析器一看这返回的结果能执行，于是把代码进行了解析和执行，顺便把数据处理了
+            //这样就实现了跨域
+            script.src = 'http://127.0.0.1:9000/jsonp';
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td,th{
+            border: 1px solid #ccc;
+            text-align: center;
+            border-collapse: collapse;
+        }
+        table{
+            width: 500px;
+            margin: 100px auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+    <script>
+        var datas = [
+            {
+                name: 'cjx1',
+                subject: 'javascript',
+                score: 99
+            },
+            {
+                name: 'cjx2',
+                subject: 'javascript',
+                score: 100
+            },
+            {
+                name: 'cjx3',
+                subject: 'javascript',
+                score: 89
+            },
+            {
+                name: 'cjx4',
+                subject: 'javascript',
+                score: 90
+            }
+        ];
+        var tbody = document.querySelector('tbody');
+        for(var i = 0; i < datas.length; i++){
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            //循环遍历每个对象，根据属性值的个数创建td单元格
+            for(var k in datas[i]){
+                //console.log(k);之前说过，这种方式遍历对象，打印k是打印所有的属性名，所以循环的次数就是属性的个数
+                /*前面的知识点复习:
+                    for(var k in obj){
+                        console.log(k);打印属性名
+                        console.log(obj[k]);打印属性值
+                    }
+                */
+                var td = document.createElement('td');
+                tr.appendChild(td);
+                //把对象里的属性值给td
+                td.innerHTML = datas[i][k];
+            }
+            //创建有删除的单元格
+            var tds = document.createElement('td');
+            tds.innerHTML = '<a href="javascript:;">删除</a>';
+            tr.appendChild(tds);
+        }
+        var as = document.querySelectorAll('a');
+        for(var i = 0; i < as.length; i++){
+            as[i].onclick = function() {
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+    </script>
+</body>
+</html>

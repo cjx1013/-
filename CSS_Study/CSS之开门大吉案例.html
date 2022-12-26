@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+            width: 450px;
+            height: 300px;
+            margin: 100px auto;
+            background: url(龙猫.gif) no-repeat center;
+            position: relative;
+            background-size: 450px 300px;
+            border: 1px solid #000;
+            perspective: 1000px;
+        }
+        .door-l,.door-r{
+            width: 50%;
+            height: 100%;
+            background-color: rgb(239, 43, 43);
+            position: absolute;
+            top: 0;
+            border: 1px solid #000;
+            transition: all 1s;
+        }
+        .door-l{
+            left: 0;
+            transform-origin: left;
+        }
+        .door-r{
+            right: 0;
+            transform-origin: right;
+        }
+        .door-l::before,.door-r::before{
+            content: "";
+            display: block;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid #000;
+            top:50%;
+            transform: translateY(-50%);
+        }
+        .door-l::before{
+            right: 5px;
+        }
+        .door-r::before{
+            left: 5px;
+        }
+        section:hover .door-l{
+            transform: rotateY(-120deg);/*负值则向左旋转*/
+        }
+        section:hover .door-r{
+            transform: rotateY(120deg);/*正值则向右旋转*/
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="door-l"></div>
+        <div class="door-r"></div>
+    </section>
+</body>
+</html>

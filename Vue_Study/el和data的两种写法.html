@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--
+        el与data的两种写法
+            1、el有两种写法
+                （1）new Vue时配置el属性
+                （2）先创建Vue实例v，随后再通过v.$mount('#root')指定el的值
+            2、data有两种写法
+                （1）对象式：data{}
+                （2）函数式
+                如何选择：目前哪种方法都可以，以后学习到组件时，data必须使用函数式，否则会报错
+            3、一个重要的原则：
+                由Vue管理的函数，一定不要写箭头函数，箭头函数本身没有this，一旦写了箭头函数，this就不再是Vue实例了
+    -->
+    <div id="root">
+        <h1>你好,{{name}}</h1>
+    </div>
+    <script>
+        // new Vue({
+        //     el: '#root',
+        //     data: {//data的第一种写法：对象式
+        //         name: 'cjx'
+        //     }
+        // })
+        //el的另一种写法
+        // const v = new Vue({
+        //     data: {
+        //         name: 'cjx'
+        //     }
+        // })
+        // v.$mount('#root');//这种更为灵活一点
+        //比如
+        // setTimeout(() => {
+        //     v.$mount('#root');//实例创建好了，但是让它1s后再绑定容器
+        // }, 1000);
+
+        //data的另一种写法
+        new Vue({
+            el: '#root',
+            // data:function() {//不能使用箭头函数，因为使用箭头函数后this就不是Vue实例了
+            //     console.log(this);//this指向的是Vue实例
+            //     return{
+            //         name: 'cjx'
+            //     }
+            // }
+            //因为ES6新特性，所以可以写成
+            data(){
+                return{
+                    name: 'cjx'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         //优点：解决了前面两种继承的缺点，缺点：调用多次Super()构造函数
+        function Super() {
+            this.a = [1, 2, 3, 4];
+        }
+        Super.prototype.say = function() {
+            console.log('222');
+        }
+
+        function Sub() {
+            Super.call(this);
+        }
+        Sub.prototype = new Super();//第一次
+        var sub1 = new Sub();//第二次，所以拿到的a是经过多次覆盖后的a
+        var sub2 = new Sub();
+        sub1.a.push(5);
+        console.log(sub1.a);
+        console.log(sub2.a);
+        sub1.say();
+    </script>
+</body>
+</html>

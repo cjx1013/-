@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwebpack_study_vuecli=self.webpackChunkwebpack_study_vuecli||[]).push([[830],{830:function(u,e,n){n.r(e),n.d(e,{default:function(){return c}});var t=n(252);var r={name:"About"};var c=(0,n(744).Z)(r,[["render",function(u,e,n,r,c,a){return(0,t.wg)(),(0,t.iD)("h2",null,"About~~~")}]])}}]);
+//# sourceMappingURL=830.bcf0372a1d.chunk.js.map

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function phone(){
+
+        }
+        phone.name = '手机';//这种属性是属于函数对象的，而不是属于它的实例对象的，
+        //下面的方法也是一样，这样的成员称之为静态成员，利用面向对象的思想就说
+        //这样的属性和方法时属于类的，相当于设置类的静态成员，而不是属于对象的
+        //可以直接通过类名调用
+        phone.change = function () {
+            console.log('我可以改变世界');
+        }
+        phone.prototype.size = '5';//而这个给原型对象设置的是跟实例对象相通的，所以可以正常输出
+        let nokia = new phone();
+        console.log(nokia.name);//输出undefined
+        // nokia.change();//报错
+        console.log(nokia.size);  //输出5
+
+        class shouji{
+            //静态属性
+            static name = '手机';
+            static change() {
+                console.log(我可以);
+            }
+        }
+        let one = new shouji();
+        console.log(one.name);//输出undefined
+        console.log(shouji.name);//输出'手机'
+    </script>
+</body>
+</html>

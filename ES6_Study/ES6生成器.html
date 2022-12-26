@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //生成器其实就是一个特殊的函数
+        //作用是用来进行异步编程
+        function * gen(){
+            console.log(111);
+        }
+        let iterator = gen();//光这样还调用不了
+        iterator.next();//还得通过next()
+
+        //yield，函数代码的分隔符，也就是説yield把代码分割成几个部分
+        function * gen1(){
+            console.log(111);
+            yield '一只没有耳朵';
+            console.log(222);
+            yield '一只没有尾巴';
+            console.log(333);
+            yield '真奇怪';
+        }
+        let iterator1 = gen1();
+        console.log(iterator1.next()); //next返回包含value和done属性的对象
+        console.log(iterator1.next()); 
+        console.log(iterator1.next()); 
+        /*输出
+        111
+        {value: '一只没有耳朵', done: false}
+        222
+        {value: '一只没有尾巴', done: false}
+        333
+        {value: '真奇怪', done: false}
+        */
+
+        function * gen2(){
+            yield '一只没有耳朵';
+            yield '一只没有尾巴';
+            yield '真奇怪';
+        }
+        for(v of gen2()){
+            console.log(v);//每次调用输出的是yield后面的内容
+            /*
+            一只没有耳朵
+            一只没有尾巴
+            真奇怪
+            */
+        }
+    </script>
+</body>
+</html>

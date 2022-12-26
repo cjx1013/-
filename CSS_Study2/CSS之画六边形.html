@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .liubian{/*六边形为两个三角形和一个长方形拼接而成*/
+            width: 100px;
+            height: 40px;
+            background-color: #f00;
+            position: relative;
+            margin: 200px auto;
+        }
+        .liubian::before{
+            content: "";
+            border-bottom: 40px solid #f00;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            position: relative;
+            top:-60px;
+        }
+        .liubian::after{
+            content: "";
+            border-top: 40px solid #f00;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            position: relative;
+            top:80px;
+            left: -100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="liubian"></div>
+</body>
+</html>

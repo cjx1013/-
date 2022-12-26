@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            margin: 200px auto;
+
+        }
+        .son{
+            width: 200px;
+            height: 200px;
+            background-color: hotpink;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">father
+        <div class="son">son</div>
+    </div>
+    <script>
+        var son = document.querySelector('.son');
+        var father = document.querySelector('.father');
+        /*捕获阶段，如果addEventListener第三个参数是true，那么
+        则处于捕获阶段，document->html->body->father->son
+        onclick和attchEvent只能得到冒泡阶段*/
+        // son.addEventListener('click', function () {
+        //     alert('son');
+        // },true)
+        // father.addEventListener('click', function() {
+        //     alert('father');
+        // },true)//结果是先弹father后弹son
+        
+        //由于js代码只能执行捕获或冒泡其中一个阶段,所以上面的代码注释掉
+        /*冒泡阶段，如果addEventListener第三个参数不写或者是false，则
+        处于冒泡阶段，son->father->body->html>document*/
+        son.addEventListener('click', function() {
+            alert('son');
+        }, false)
+        father.addEventListener('click', function() {
+            alert('father');
+        }, false)
+        document.addEventListener('click', function () {
+            alert('document');
+        })//结果是先谈son，再是father，最后是弹document
+
+
+    </script>
+</body>
+</html>

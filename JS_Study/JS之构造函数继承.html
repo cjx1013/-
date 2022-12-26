@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //优点：解决了引用值共享的问题，但是会导致拿不到爷爷原型的方法，而原型链因为有Sub.prototype = new Super();
+        //所以可以拿到爷爷原型的方法，但是这是构造函数的继承，根本没有建立关系，没有Sub.prototype = new Super();
+        //所以拿不到爷爷的方法
+        //构造函数继承
+        function Super() {
+            this.a = [1, 2, 3, 4];
+        }
+        Super.prototype.say = function() {
+            console.log('222');
+        }
+
+        function Sub() {
+            //因为sub1,sub2都是直接从爷爷那拿的，所以彼此之间互相有影响
+            //为了消除这个影响，需要在实例化时各自产生一个a
+            //this.a = [1, 2, 3, 4];//相当于这样的效果，也就是Super的构造函数执行了一次
+            //Super();//但是这样直接调用，其实是window.Super()，所以两次调用的this.a的this都是window
+            //而我们需要的是两次实例化的this指向sub1和sub2
+            //这里可以使用call达到改变指针同时调用Super构造函数的目的
+            Super.call(this);//将调用Super函数的指针绑定为new Sub()的sub1和sub2
+            
+        }
+        var sub1 = new Sub();
+        var sub2 = new Sub();
+        sub1.a.push(5);
+        console.log(sub1.a);
+        console.log(sub2.a);
+        // sub1.say();报错
+    </script>
+</body>
+</html>

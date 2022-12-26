@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1、let定义变量不能重复声明,而var可以
+        // let a = 1;
+        // let a = 2;
+        // var a = 1;
+        // var a = 2;
+
+        //2、在ES6中引入块级作用域（{},if,else,for,while都是块级作用域）
+        // {
+        //     let a = 1;
+        // }
+        // console.log(a);//报错，a为块级作用域的元素
+
+        //3、不存在变量提升，而var存在变量提升
+        // console.log(v);//不会报错，只会输入undefined
+        // var v = 6;
+
+        // console.log(v);//会报错
+        // let v = 6;
+
+        //4、不影响作用域链
+        {
+            let f = 5;
+            function fn() {
+                console.log(f);//函数里面没有f，会往上找，仍然会正常输出
+            }
+            fn();
+        }
+    </script>
+</body>
+</html>

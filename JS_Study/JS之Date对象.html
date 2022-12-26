@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var date1  = new Date();
+        console.log(date1);
+        var date2 = new Date('2018-2-3 8:9:10');
+        console.log(date2);
+
+        var date3 = new Date();
+        var year = date3.getFullYear();
+        var month = date3.getMonth() + 1;
+        var dates = date3.getDate();
+        var day = date3.getDay();
+        var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        console.log('今天是: '+year+'年'+month+'月'+day+'日 '+arr[day]);
+
+        function getTime(){
+            var h = date3.getHours();
+            h = h < 10 ? '0' + h : h;
+            var m = date3.getMinutes();
+            m = m < 10 ? '0' + m : m;
+            var s = date3.getSeconds();
+            s = s < 10 ? '0' + s : s;
+            return h + ':' + m + ':' + s;
+        }
+        console.log(getTime());
+
+        //获得距离1970年1月1日的总毫秒数
+        var date4 = new Date();
+        console.log(date4.valueOf());
+        console.log(date4.getTime());
+        var date5 = +new Date();
+        console.log(date5);
+        console.log(Date.now());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

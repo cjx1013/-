@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <script>
+        var btns = document.querySelectorAll('button');
+        //删除传统注册事件
+        btns[0].onclick = function() {
+            alert('11');
+            btns[0].onclick = null;
+        }
+
+        //删除监听事件
+        btns[1].addEventListener('click', fn)//不需要加小括号调用
+        function fn() {
+            alert('22');
+            btns[1].removeEventListener('click', fn);
+
+        }
+
+        //删除attchEvent注册事件,ie9以前的注册事件方法
+        btns[2].attchEvent('onclick', fn1);
+        function fn1() {
+            alert('33');
+        }
+    </script>
+</body>
+</html>

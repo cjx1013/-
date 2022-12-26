@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //创建Symbol
+        let s = Symbol();
+        let s2 = Symbol('cjx');
+        let s3 = Symbol('cjx');
+        console.log(s2 === s3);
+        //Symbol.for创建
+        let s4 = Symbol.for('cjx');
+        let s5 = Symbol.for('cjx');
+        console.log(s4 === s5);
+        //七种数据类型
+        //USONB，you so NB
+        //u undefined
+        //s string symbol
+        //o object
+        //n null number
+        //b boolean
+    </script>
+</body>
+</html>

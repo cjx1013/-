@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 300px;
+            height: 200px;
+            margin: 100px auto;
+        }
+        td{
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <table style="border-collapse:collapse" class="tb">
+        <thead>
+            <tr>
+                <td><input type="checkbox" id="chooseAll"></td>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>身高</td>
+                <td>体重</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>cjx</td>
+                <td>60</td>
+                <td>180</td>
+                <td>145斤</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>cjx</td>
+                <td>60</td>
+                <td>180</td>
+                <td>145斤</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>cjx</td>
+                <td>60</td>
+                <td>180</td>
+                <td>145斤</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>cjx</td>
+                <td>60</td>
+                <td>180</td>
+                <td>145斤</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var chooseAll = document.getElementById('chooseAll');
+        var checks = document.querySelector('tbody').querySelectorAll('input');
+        chooseAll.onclick = function () {
+            for(var i = 0; i < checks.length; i++) {
+                checks[i].checked = this.checked;
+            }
+        }
+        for(var i = 0; i < checks.length; i++) {
+            checks[i].onclick = function () {
+                var flag = true;
+                for(var i = 0; i < checks.length; i++) {
+                    if(!checks[i].checked){
+                        flag = false;
+                        break;
+                    }
+                }
+                chooseAll.checked = flag;
+            }
+        }
+
+    </script>
+</body>
+</html>

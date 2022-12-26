@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1{
+            width: 400px;
+            height: 500px;
+            background-color: pink;
+            display: flex;
+        }
+        .div1 div{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            /*flex-basis: 30%;设置该属性之后就相当于宽度，width就不奏效了，这表示两个div的宽度都是父亲宽度的30%，为120px*/
+
+        }
+        .div1 div:first-child{
+            flex-basis: 50px;/*也可以用px设置，该设置表示第一个div宽度50px，第二个宽度100px*/
+            flex-grow: 1;/*该属性表示分配剩余空间，该设置表示第一个div分剩余空间宽度的1份
+            剩余空间宽度为400-50-100=250，那么剩余空间的一份就位250/5=50px，所以第一个div的宽度变为50+50=100px*/
+            
+        }
+        .div1 div:last-child{
+            flex-basis: 100px;
+            flex-grow: 4;/*第二个div分剩余空间宽度的4份，第二个div的宽度就变为100+50*4=300px*/
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

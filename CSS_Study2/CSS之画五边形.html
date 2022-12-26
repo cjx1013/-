@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wubian{/*五边形为一个三角形和梯形拼接而成*/
+            width: 54px;
+            height: 0;
+            margin: 200px auto;
+            border-top: 50px solid #f00;
+            border-left: 18px solid transparent;
+            border-right: 18px solid transparent;
+            position: relative;
+        }
+        .wubian::before{
+            content: "";
+            width: 0;
+            height: 0;
+            border-bottom: 50px solid #f00;
+            border-left: 45px solid transparent;
+            border-right: 45px solid transparent;
+            position: absolute;
+            top:-100px;
+            left: -18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wubian"></div>
+</body>
+</html>

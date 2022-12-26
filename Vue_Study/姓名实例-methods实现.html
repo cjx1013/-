@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        姓:<input type="text" v-model:value="firstName"><br>
+        名:<input type="text" v-model:value="lastName"><br>
+        <!--methods中的内容跟data中的数据一样，在Vue实例中也有一份，所以用插值语法可以直接访问到-->
+        <!--data中的数据发生变化，模板就会重新解析，插值语法里的值或者函数都会再更新或执行一遍-->
+        <!-- 注意这里可不是绑定事件，绑定事件没有参数加不加括号无所谓，但这里一定要加括号，
+            因为要调用，需要它的返回值插入到span文本中，如果不加括号就意味着将函数插入到这位置 -->
+        全名:<span>{{fullName()}}</span>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                firstName: '张',
+                lastName: '三'
+            },
+            methods: {
+                fullName(){
+                    //this就是Vue实例，data的属性直接有一份在Vue实例中，所以this.xxx可以直接访问
+                    return this.firstName + '-' + this.lastName;//可以在这里对结果添加一些额外的操作
+                }
+            }
+        })
+    </script>
+</body>
+</html>

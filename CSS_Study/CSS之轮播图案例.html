@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider{
+            width: 590px;
+            height: 470px;
+            margin: 50px auto;
+            position: relative;
+        }
+        ul{
+            list-style: none;
+        }
+        .arrow-l,.arrow-r{
+            display: block;
+            width: 24px;
+            height: 36px;
+            background-color: rgba(0, 0, 0, .4);
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            line-height: 36px;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            margin-top: -18px;
+        }
+        .arrow-l{
+            left: 0;
+        }
+        .arrow-r{
+            right: 0;
+        }
+        .circle{
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            margin-left: -32px;
+            padding-left: 0;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 6px;
+        }
+        .circle li{
+            float: left;
+            width: 9px;
+            height: 9px;
+            background-color: #B7B7B7;
+            margin: 2px;
+            border-radius: 50%;
+        }
+        .circle .current{/*这里不能直接.current,因为存在权重问题，如果是.current，
+            则权重没有上面的.circle li高，则不会设置颜色成功*/
+            background-color: #f40;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <img src="jingdong1.jpg" alt="">
+        <a href="#" class="arrow-l">&lt;</a>
+        <a href="#" class="arrow-r">&gt;</a>
+        <ul class="circle">
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+</html>

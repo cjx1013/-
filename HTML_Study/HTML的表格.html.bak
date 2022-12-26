@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+	<head>
+		<title>表格</title>
+	</head>
+	<body>
+	<center><h1>员工信息列表</h1><center>
+	<!--
+		border="1px" 设置表格的边框为1像素宽度
+	-->
+	<!--表有两行，每行中有三个单元格-->
+		<!-- <table border="1px" width="300px"> --> 
+		<table align="center" border="1px" width="60%" height="150px"> <!--在table标签中设置属性align居中，是表格居中-->
+		<!--align对齐方式-->
+			<tr align="center"><!--一行中的单元格内容居中-->
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+			<tr>
+				<td>d</td>
+				<td>e</td>
+				<td align="center">f</td><!--某个单元格居中-->
+			</tr>
+		</table>
+	</body>
+</html>

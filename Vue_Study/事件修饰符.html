@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            background-color: aquamarine;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--
+        Vue中的事件修饰符：
+            1、prevent：阻止默认事件（常用）
+            2、stop：阻止事件冒泡（常用）
+            3、once：事件只触发一次（常用）
+            4、capture：使用事件的捕获模式
+            5、self：只有event.target是当前操作的元素时才触发事件
+            6、passive：事件的默认行为立即执行，无需等待事件回调执行完毕
+            比如注册窗口滚动事件，循环10000次打印666，滚动鼠标滑轮时，窗口并不会立马
+            滚动，而是等10000次打印结束后才去执行滚动，此时设置了passive那么就不必等打印
+            10000次之后再滚动，而是会立即滚动
+    -->
+    <div id="root">
+        <h2>欢迎{{name}}</h2>
+        <!-- 阻止默认事件 -->
+        <a href="http://www.baidu.com" @click.prevent="showInfo">点击跳转百度</a><!--阻止链接跳转-->
+        
+        <!--阻止事件冒泡-->
+        <div class="father" @click="showInfo1">
+            <div class="son" @click.stop="showInfo2"></div>
+        </div>
+
+        <!--事情只触发一次-->
+        <button class="btn1" @click.once="showInfo3">提示信息</button>
+
+        <!--使用事件的捕获模式，就是捕获阶段，冒泡阶段的那个捕获-->
+        <div class="father" @click.capture="showInfo1">
+            <div class="son" @click="showInfo2"></div>
+        </div>
+
+        <!--只有event.target是当前操作的元素时才触发事件
+            点击son时e.target就是son，所以当点击son时，是不会触发father的事件的
+            从另一种角度，这也是达到了阻止冒泡
+        -->
+        <div class="father" @click.self="showInfo1">
+            <div class="son" @click="showInfo2"></div>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                name: 'cjx'
+            },
+            methods: {
+                showInfo() {
+                    alert('haha');
+                },
+                showInfo1() {
+                    alert('father');
+                },
+                showInfo2() {
+                    alert('son');
+                },
+                showInfo3() {
+                    alert('事件只触发一次')
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

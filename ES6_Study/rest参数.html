@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ES6引入rest参数，用来获取函数的实参，用来代替arguments
+        //ES5获取实参的方式
+        // function data(){
+        //     console.log(arguments);//arguments是一个内置对象，展示形式为一个伪数组
+        // }
+        // data('ddd', 'rr');
+        function fn(...args){
+            console.log(args);//输出的是一个数组
+        }
+        fn('dfa', 'afe');
+
+        function fn1(a, b, ...args){//rest参数必须要放在最后
+            console.log(a);
+            console.log(b);
+            console.log(args);
+        }
+        fn1(1, 2, 3, 4, 5);
+    </script>
+</body>
+</html>

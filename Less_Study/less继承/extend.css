@@ -1,0 +1,45 @@
+.myColor,
+.class1,
+.class2,
+.class3,
+.class4,
+.father .inner {
+  background-color: pink;
+}
+.myColor:hover,
+.class2:hover {
+  background-color: red;
+}
+.border,
+.class3,
+.class4 {
+  border: 1px solid hotpink;
+}
+.class1 {
+  width: 90px;
+  height: 100px;
+}
+.class2 {
+  width: 90px;
+  height: 100px;
+}
+.class3 {
+  width: 80px;
+  height: 90px;
+}
+.class4 {
+  width: 80px;
+  height: 90px;
+}
+.father {
+  width: 100px;
+  height: 100px;
+}
+.father .inner:nth-child(1) {
+  width: 50px;
+  height: 60px;
+}
+.father .inner:nth-child(2) {
+  width: 70px;
+  height: 80px;
+}

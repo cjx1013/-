@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const user = {
+            class: 'cjx',
+            member: [
+                'xiaoming',
+                'xiaohong',
+                'xiaobai',
+                'xiaoxin'
+            ],
+            //自定义迭代器
+            [Symbol.iterator]() {
+                //声明一个索引
+                let index = 0;
+                //保存this对象
+                let _this = this;
+                //返回值为一个对象，且对象里面有next方法
+                return {
+                    next: function () {
+                        if (index < _this.member.length) {
+                            //next方法返回的是一个包含value和done属性的对象
+                            const result = { value: _this.member[index], done: false };
+                            index++;
+                            return result;
+                        } else {
+                            return { value: undefined, done: true };
+                        }
+
+                    }
+                };
+            }
+        };
+        //要求利用for……of循环遍历user对象中的member数组，不能user.member.forEach()
+        for (v of user) {//用for……of循环时，会调用Symbol.iterator方法
+            console.log(v);
+        }
+    </script>
+</body>
+
+</html>

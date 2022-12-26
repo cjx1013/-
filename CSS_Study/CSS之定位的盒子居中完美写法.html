@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 200px;
+            background-color: pink;
+            position: absolute;
+            /*transform: translate(100px);这是水平移动100px
+            transform: translate(50%);如果移动距离是百分数
+            那么不像之前定位盒子的left:50%以父级宽度为准，而是
+            以自己的宽度为准，意思就是走盒子自己的宽度的一半*/
+            /*left: 50%;
+            margin-left: -150px;
+            top: 50%;
+            margin-right: -100px;以前的写法，不好，需要计算*/
+            /*现在的写法*/
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+
+
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

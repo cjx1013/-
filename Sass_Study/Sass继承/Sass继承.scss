@@ -1,0 +1,11 @@
+.class1{
+    padding: 15px;
+}
+.class1 a{
+    color: blue;
+}
+
+.class2{
+    @extend .class1;
+    background-color: pink;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #eee;
+        }
+        .main{
+            width: 200px;
+            height: 300px;
+            background-color: #fff;
+            margin: 200px auto;
+            position: relative;
+            text-align: center;
+        }
+        .main .m-title{
+            font-weight: 700;
+            font-size: 20px;
+            padding: 20px 0;
+        }
+        .main img{
+            width: 150px;
+            position: absolute;
+            left:50%;
+            top:130px;
+            transform: translate3d(-50%,0,0);
+            transition: all .5s;
+            cursor: pointer;
+        }
+        .main img:hover{
+            transform: translateX(-100px);
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="m-title">官方直营优选</div>
+        <div class="m-content">好手表值得拥有</div>
+        <div class="m-img"><img src="../images/watch.jpg"></div>
+    </div>
+</body>
+</html>

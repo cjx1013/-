@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.js"></script>
+</head>
+<body>
+    <span>0</span>
+    <button>点我+1</button>
+    <script>
+        //节流：在规定的间隔时间范围内不会重复触发回调，只有大于这个时间间隔才会触发回调，把频繁触发变为少量触发
+        var count = 0
+        var btn = document.querySelector('button')
+        var span = document.querySelector('span')
+        // btn.addEventListener('click', function() {
+        //     span.innerHTML = ++count 
+        //        console.log('执行');
+        // })
+
+        //在五秒以内，只能加上1
+        btn.onclick = _.throttle(function() {
+            //节流：目前这个回调函数5s执行一次
+            //假如这里面有很多业务代码，就可以给浏览器很充裕的时间去解析
+            span.innerHTML = ++count
+            console.log('执行');
+        }, 5000)
+
+    </script>
+</body>
+</html>

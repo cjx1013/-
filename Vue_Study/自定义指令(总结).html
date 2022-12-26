@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--
+        自定义指令总结：
+            一、定义语法：
+                （1）局部指令：
+                    new Vue({                           new Vue({
+                        directives:{指令名:配置对象} 或     directives:{指令名:回调函数}
+                    })                                  }) 
+                （2）全局指令
+                    Vue.directive(指令名,配置对象) 或 Vue.directive(指令名,回调函数)
+            二、配置对象中常用的3个回调：
+                    （1）bind：指令与元素成功绑定时调用
+                    （2）inserted：指令所在元素被插入页面时调用
+                    （3）update：指令所在模板结构被重新解析时调用
+            三、备注：
+                    1、指令定义时不加v-,但使用时要加v-
+                    2、指令名如果是多个单词要使用kebab-case命名方式（比如user-name），不要用camelCase命名（如userName）
+    -->
+    <div id="root">
+        <h3>欢迎{{name}}</h3>
+        <h3>当前n的值: <span v-text="n"></span></h3>
+        <!--自定义指令时，指令的书写格式问题
+            像这样写bigNumber，然后directives里写bigNumber会报错
+            虽然指令名写v-bigNumber，directives里如果换成bignumber不会报错
+            但是不建议这么写
+        -->
+        <!-- <h3>放大10倍后n的值: <span v-bigNumber="n"></span></h3> -->
+        <!--
+            如果是多个单词拼接而成的指令名，应该用 - 连接
+            如：v-big-number,然后directives里换成'big-number'(){}（也就是'big-number':function(){}的简写）
+            其实都应该加引号，像fbind实际上也是写成'fbind'(){}
+            但我们更习惯fbind(){}这种
+        -->
+        <!-- <h3>放大10倍后n的值: <span v-big-number="n"></span></h3> -->
+        <!-- <h3>放大10倍后n的值: <span v-big="n"></span></h3> -->
+        <button @click="n++">点击n++</button><br>
+        <input type="text" v-fbind:value="n">
+    </div>
+    <script>
+        //定义全局directives
+        // Vue.directive('fbind', {
+        //     bind(element, binding) {
+        //         console.log(this);
+        //         element.value = binding.value;
+        //     },
+        //     inserted(element, binding) {
+        //         console.log(this);
+        //         element.focus();
+        //     },
+        //     update(element, binding) {
+        //         console.log(this);
+        //         element.value = binding.value;
+        //     }
+        // })
+        new Vue({
+            el: '#root',
+            data: {
+                name: 'cjx',
+                n: 99
+            },
+            //局部directives，同过滤器filters类似，当有多个Vue实例时，用不了这里的directives的自定义指令
+            directives:{
+                // 'big-number'(element, binding) {
+                //     element.innerHTML = binding.value * 10;
+                // },
+                big(element, binding) {
+                    // 这里的this都是window
+                    console.log(this);
+                    element.innerHTML = binding.value * 10;
+                },
+                fbind:{
+                    bind(element, binding) {
+                        console.log(this);
+                        element.value = binding.value;
+                    },
+                    inserted(element, binding) {
+                        console.log(this);
+                        element.focus();
+                    },
+                    update(element, binding) {
+                        console.log(this);
+                        element.value = binding.value;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div[class^=font]{/*class^="font"表示font在开始位置就行了*/
+            color: pink;
+        }
+        div[class$=footer]{/*class^="font"表示font在结束位置就行了*/
+            color: skyblue;
+        }
+        div[class*=tao]{/*class*="tao"表示font在任意位置就行了*/
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="font12">属性选择器</div>
+    <div class="font12">属性选择器</div>
+    <div class="font24">属性选择器</div>
+    <div class="font24">属性选择器</div>
+    <div class="24font">属性选择器</div>
+    <div class="sub-footer">属性选择器</div>
+    <div class="jd-footer">属性选择器</div>
+    <div class="news-tao-nav">属性选择器</div>
+    <div class="news-tao-header">属性选择器</div>
+    <div class="tao-header">属性选择器</div>
+</body>
+</html>

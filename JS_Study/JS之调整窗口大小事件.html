@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //因为window的load事件是在文档内容都加载完毕之后执行，所以
+        //可以使JS代码写在页面元素的上方了
+        window.addEventListener('load', function () {
+            var div = document.querySelector('div');
+            window.addEventListener('resize', function () {//调整窗口大小事件
+                console.log(window.innerWidth);
+                if(window.innerWidth < 600){
+                    div.style.display = 'none';
+                }else{
+                    div.style.display = 'block';
+                }
+            })
+        })
+    </script>
+    <div></div>
+</body>
+</html>

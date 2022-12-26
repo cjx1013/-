@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>今天天气很{{info}}</h1>
+        <button @click="changeWeather">点击切换天气</button>
+        <!--事件绑定时，@xxx="yyy", yyy可以写一些简单的语句，但是并不是所有的语句都能选
+        语句中的变量啥的得是vm身上能找到的，否则比如写alert(1)，它就会报错alert找不到-->
+        <!-- <button @click="isHot = !isHot; x++">点击切换天气</button> -->
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                isHot: 'true',//按照我的理解，data就像是声明变量
+                x: 1
+            },
+            computed: {//computed计算属性就像是对变量进行一系列操作
+                info() {//只有get，所以简写，这个函数就相当于get
+                    return this.isHot ? '炎热' : '寒冷'
+                }   
+            },
+            methods: {
+                changeWeather() {
+                   this.isHot = !this.isHot;//切换isHot的值 
+                }   
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //原型链继承的优点：除了拿到爷爷属性之外，还能够拿到爷爷原型的方法：sub1.say()
+        //现在我想要通过sub1，来拿到a和say方法
+        function Super() {
+            this.a = '111';
+        }
+        //在Super的原型对象上设置一个函数
+        Super.prototype.say = function () {
+            console.log('222');
+        }
+
+        function Sub(){
+
+        }
+        
+        //sub1是Sub的一个实例，它能拿到函数Sub的原型对象（也就是sub1的爸爸的东西）
+        //但是拿不到Super的东西，因为他们之间没有关系，所以需要建立关系
+        Sub.prototype = new Super();//让Sub的原型对象成为Super的实例
+        //那么该实例的公共祖先就成为了Super的原型对象，这样它们之间就建立起了关系
+        //sub1的实例是Super原型对象的孙子
+        var sub1 = new Sub();
+        console.log(sub1.a);
+        sub1.say();
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let s = new Set();//空集合，类型是一个对象
+        let s2 = new Set(['大', '小', '中']);//Set()括号里可以接受可迭代数据
+
+        //元素个数
+        console.log(s2.size);
+        //增加新的元素
+        s2.add('哈哈');
+        //删除元素
+        s2.delete('小');
+        //检测
+        console.log(s2.has('大'));
+        //清空
+        // s2.clear();
+
+        //for……of遍历
+        for(let v of s2){
+            console.log(v);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 500px;
+            height: 200px;
+            margin: 100px auto;
+            position: relative;
+        }
+        input{
+            width: 80%;
+            height: 40px;
+            top:50%;
+            position: absolute;
+            transform: translateY(-50%);
+            outline: 0;
+        }
+        .container .icon{
+            position: absolute;
+            display: inline-block;
+            right: 105px;
+            top: 90px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="password">
+        <div class="icon"><i class="fa fa-eye-slash"></i></div>
+    </div>
+    <script>
+        var flag = 0;
+        var img = document.querySelector('.icon');
+        var txt = document.querySelector('input');
+        var i = document.querySelector('i');
+        img.onclick = function(){
+            if(!flag){
+                txt.type = 'text';
+                i.className = 'fa fa-eye';
+                flag = 1;
+            }else{
+                flag = 0;
+                txt.type = 'password';
+                i.className = 'fa fa-eye-slash';
+            }
+        }
+
+    </script>
+</body>
+</html>

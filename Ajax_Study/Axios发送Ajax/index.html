@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.27.2/axios.min.js"></script>
+</head>
+
+<body>
+    <button>get</button>
+    <button>post</button>
+    <button>axios函数</button>
+    <script>
+        var btns = document.querySelectorAll('button');
+        //配置baseURL
+        axios.defaults.baseURL = 'http://127.0.0.1:8000';//当然可以直接在axios.get的第一个参数写完整地url，http://127.0.0.1:8000/server
+        btns[0].addEventListener('click', function () {
+            //get请求
+            axios.get('/server', {
+                //url的参数
+                params: {
+                    id: 100,
+                    vip: 7
+                },
+                //请求头信息
+                headers: {
+                    name: 'ccc'
+                }
+            }).then(value => {
+                console.log(value);
+            });
+        })
+        btns[1].addEventListener('click', function () {
+            //post请求
+            axios.post('/server', {
+                username: 111,
+                password: 222
+            }, {
+                params: {
+                    id: 200,
+                    vip: 9
+                },
+                //请求头参数
+                headers: {
+                    name: 'jjj'
+                }
+            }
+
+            )
+        })
+
+        btns[2].addEventListener('click', function () {
+            //axios函数方式,格式几乎和http请求报文一致，请求行（请求方式，url，协议），请求头，空行，请求体
+            axios({
+                //请求方式
+                method: 'POST',
+                //url
+                url: '/server',
+                //url参数
+                params: {
+                    a: 22,
+                    b: 33
+                },
+                //请求头信息
+                headers: {
+                    name: 'xxx'
+                },
+                //请求体参数
+                data: {
+                    username: 22222,
+                    password: 11111
+                }
+            }).then(response => {
+                console.log(response);
+            })
+        })
+
+    </script>
+</body>
+
+</html>

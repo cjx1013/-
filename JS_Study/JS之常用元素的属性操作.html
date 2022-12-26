@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="yangyang">杨洋</button>
+    <button id="liuyifei">刘亦菲</button>
+    <img src="../images/杨洋.jpeg" title="杨洋" style="width: 200px">
+    <script>
+        var yy = document.getElementById('yangyang');
+        var lyf = document.getElementById('liuyifei');
+        var img = document.querySelector('img');
+        lyf.onclick = function(){
+            img.src = '../images/刘亦菲.jpeg';
+            img.style = 'width: 200px';
+            img.title = '刘亦菲';
+        }
+        yy.onclick = function(){
+            img.src = '../images/杨洋.jpeg';
+            img.title = '杨洋';
+        }
+    </script>
+</body>
+</html>

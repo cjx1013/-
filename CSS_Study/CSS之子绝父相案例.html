@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 280px;
+            height: 280px;
+            border: 1px solid #ccc;
+            position: relative;
+            margin: 50px auto;
+        }
+        .beauty{
+            padding: 15px;
+        }
+        .topIcon{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .bottomIcon{
+            position: absolute;
+            right: 0;/*右下角可以这样写，不是非要用top，left还要算多少px*/
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="1.png" alt="" class="topIcon">
+        <img src="beauty.png" alt="" class="beauty" style="width: 249px;">
+        <img src="1.png" alt="" class="bottomIcon">
+    </div>
+</body>
+</html>

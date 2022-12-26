@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1{
+            width: 400px;
+            height: 500px;
+            background-color: pink;
+            display: flex;
+        }
+        .div1 div{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+
+        }
+        .div1 div:first-child{
+            flex-basis: 300px;
+            flex-shrink: 1;/*flex-shrink表示子元素来缩小它超出的部分的宽度的占额，超出部分为300+300-400=200
+            第一个div缩小1份，第二个div缩小4份，一份为200/5=40px，那么第一个div缩小后300-40=260px*/
+        }
+        .div1 div:last-child{
+            flex-basis: 300px;
+            flex-shrink: 4;/*第二个div缩小4份，得300-4*40=140px*/
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

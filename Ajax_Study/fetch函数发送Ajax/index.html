@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>fetch</button>
+    <script>
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function () {
+            // fetch(url[?url参数],{请求方式，请求头，请求体})
+            fetch('http://127.0.0.1:8000/server?id=1',{
+                // 请求方式
+                method: 'POST',
+                //请求头
+                headers: {
+                    hhh: 666
+                },
+                //请求体
+                body: {
+                    username: 123
+                }
+            }).then(response => {
+                // return(response);
+                // return(response.text());//获取响应体内容
+                return(response.json());//获取响应体，转换为json格式
+            }).then(response => {
+                console.log(response);
+            })
+        })
+    </script>
+</body>
+</html>

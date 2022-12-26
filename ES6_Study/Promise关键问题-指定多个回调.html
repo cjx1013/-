@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve, reject)=>{
+            // 调用resolve函数，对象状态由pending=>fullfilled(resolved)
+            // 则then对应的成功的回调都会调用
+            // resolve()
+
+            // 调用reject函数，对象状态由pending=>rejected
+            // 则then对应的失败的回调都会调用
+            // reject()
+
+            // 如果对象状态不改变，也就是既不调用resolve，reject，也不抛出错误
+            // 则then的回调一个都不会执行
+        })
+
+        // 回调1
+        p.then(value=>{
+            console.log('成功1')
+        },reason=>{
+            console.log('失败1')
+        })
+        // 回调2
+        p.then(value=>{
+            console.log('成功1')
+        },reason=>{
+            console.log('失败2')
+        })
+    </script>
+</body>
+</html>

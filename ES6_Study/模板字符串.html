@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ES6引入新的声明字符串的方式  反引号 : `` 
+        //1、声明
+        let str = `我也是一个字符串哦!`;
+        console.log(str, typeof str);
+
+        //2、内容中可以直接出现换行符
+        let str1 = `<ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                    </ul>`;
+        // 传统的单引号和双引号如果有换行符会报错，若想包含换行符需要用+号连接
+        //如： '<ul>'
+        //     + '<li>1</li>'
+        //3、变量拼接
+        let v = 'cjx';
+        let out = `${v}是我心目中最好的`;
+        console.log(out);
+    </script>
+</body>
+</html>

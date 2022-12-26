@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>发送请求</button>
+    <button>取消请求</button>
+    <div></div>
+    <script>
+        let xhr = null;
+        var btn = document.querySelectorAll('button');
+        var btn1 = btn[0];
+        var btn2 = btn[1];
+        //有时用户会不断多次请求，此时为了给服务器缓解压力，将前面的重复的请求都取消
+        let isSending = false;
+        btn1.onclick = function () {
+            if(isSending){//如果前面有重复的请求，则取消
+                xhr.abort();
+            }
+            xhr = new XMLHttpRequest();
+            isSending = true;
+            xhr.open('GET', 'http://127.0.0.1:8000/cancel');
+            //发送
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState === 4){//当readyState等于4，表明数据全部发送完成，此时，修改变量,可以进行下一次请求
+                    isSending = false;
+                }
+            }
+            
+        }
+        btn2.onclick = function () {
+            xhr.abort();//取消请求
+        }
+    </script>
+</body>
+</html>

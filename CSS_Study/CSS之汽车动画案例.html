@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            animation: car 2s infinite;/*引用动画*/
+        }
+        /*定义动画*/
+        @keyframes car{
+            0%{
+                transform: translate3d(0,0,0);
+            }
+            50%{
+                transform: translate3d(600px,0,0);
+            }
+            51%{/*汽车掉头，位置不变，但是要翻转图片*/
+                transform: translate3d(600px,0,0) rotateY(180deg);
+                /*如果有多组变形都属于，用空格隔开就可以了*/
+            }
+            100%{
+                transform: translate3d(0,0,0) rotateY(180deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="car.png" style="width: 100px;">
+</body>
+</html>

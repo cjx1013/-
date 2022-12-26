@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //Math.random()得到一个大于等于 0，小于 1 之间的随机数
+        function getRandom(min, max){
+            return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值
+        }
+        //随机点名
+        var student=['张三', '李四', '王二麻子', '王五'];
+        console.log(student[getRandom(0,3)]);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

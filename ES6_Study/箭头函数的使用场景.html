@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        //需求1、鼠标点击2s后变色
+        let div = document.querySelector('div');
+        // div.addEventListener('click', function () {
+        //     let _this = this;
+        //     setTimeout(function () {
+        //         //不能这样写，因为this指向的并不是div，而是window（因为是window.setTimeout()）
+        //         // this.style.backgroundColor = 'red';
+        //         //需要在该函数外面先保存this对象
+        //         // _this.style.backgroundColor = 'red';
+        //         //或者直接
+        //         // div.style.backgroundColor = 'red';
+        //     }, 2000);
+        // })
+
+        //当使用箭头函数时
+            div.addEventListener('click', function () {
+                setTimeout(() => {
+                    this.style.backgroundColor = 'red';//可直接这样写，this是静态的，this指向最近的外层作用域中的this所指对象
+                }, 2000);
+            })
+
+        //需求2、返回数组中的偶数
+        const arr = [6,10,15,17,20];
+        // const result = arr.filter(function (item) {
+        //     if(item % 2 == 0){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
+        // })
+        const result = arr.filter(item => item % 2 == 0 );
+
+        //箭头函数适合与this无关的回调，定时器，数组的方法回调
+        //箭头函数不适合与this有关的回调，事件回调，对象的方法
+    </script>
+</body>
+</html>

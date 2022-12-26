@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div:first-child{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            padding: 10px;
+            border: 15px solid skyblue;
+            box-sizing: content-box;/*就是以前的盒模型 ，w3c的，此时盒子的宽和高为250px
+            padding和border会撑大盒子，盒子大小=宽+padding+border+width*/
+        }
+        div:last-child{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            padding: 10px;
+            border: 15px solid pink;
+            box-sizing: border-box;/*CSS3的盒模型，border和padding不撑大盒子
+            盒子大小就是width大小，就是说padding和border是包含在width中的*/
+        }
+    </style>
+</head>
+<body>
+    <div>content-box</div>
+    <div>border-box</div>
+</body>
+</html>

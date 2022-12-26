@@ -1,0 +1,8 @@
+$i: 6;
+
+@while $i>0{
+    .icon-#{$i}{
+        width: 5px*$i;
+    }
+    $i: $i - 2;
+}

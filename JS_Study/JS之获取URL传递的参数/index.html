@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    欢迎您!<span></span>
+    <script>
+        var span = document.querySelector('span');
+        // console.log(location.search);
+        //则location.search得到的是?uname=123
+        //利用字符串的substr函数来截取?后面的，也就是去掉?
+        var param = location.search;
+        //substr(截取的位置，截取的个数),截取的个数不写就是默认到最后一位
+        //再利用split函数，将字符串分离成数组
+        var arr = param.substr(1).split('=');
+        span.innerHTML = arr[1];
+    </script>
+</body>
+</html>

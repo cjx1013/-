@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/detail.js"></script>
+    <style>
+        div{
+            width: 450px;
+            height: 450px;
+            border: 1px solid #eee;  
+            position: relative;
+        }
+        .scale{
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            left: 450px;
+            top: 0;
+            display: none;
+            overflow: hidden;
+        }
+        .scale img{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .small{
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: #FEDE4F;
+            opacity: 0.5;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="small"></div>
+        <img src="../images/phone.jpg">
+        <div class="scale"><img src="../images/phone.jpg" style="width: 700px;"></div>
+    </div>
+</body>
+</html>

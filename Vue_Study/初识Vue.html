@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--
+        初识Vue：
+            1、想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象
+            2、root容器里的代码依然符合html规范，只不过混入了一些特殊的Vue
+            3、root容器里的代码被称为【Vue模板】
+            4、Vue实例和容器是一一对应的，也就是说一个Vue实例只能对应一个容器，一个容器也只能对应一个实例
+            5、真实开发中只有一个Vue实例，并且会配合着组件一起使用
+            6、{{xxx}}中的xxx要写js表达式，那么模块中用到该数据的地方也会自动更新
+    -->
+    <!--准备好一个容器-->
+    <div id="root">
+        <h1>Hello,{{name}},{{address}},{{1+1}}</h1>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;//阻止 vue 在启动时生成生产提示。
+
+        //创建Vue实例
+        new Vue({
+            el: "#root",//el(element)用于指定当前Vue实例为哪个容器服务，值通常为css选择器字符串
+            //你也可以document.getElementById(),不过这样写太麻烦
+            data: {
+                name: 'cjx',//data中用于存储数据，数据供el所指定的容器去使用，值我们暂时先写成一个对象
+                address: 'zhongguo'
+            }
+        })
+
+        /*解析过程
+            先有的容器，然后有的Vue实例，当实例开始工作的时候，它发现你写的配置
+            el: "#root"，它就知道得把整个root容器拿过来解析，去扫描没有{{}}这样的语法
+            如果扫描到了，比如说有{{name}}，然后看data里有没有name，有就把name对应的值
+            替换掉{{name}}，然后就生成了一个全新的div，id为root的容器
+            所以容器的两个作用，一、为Vue提供模板，二、把Vue的工作成果让它知道往哪放
+        */
+    </script>
+</body>
+</html>

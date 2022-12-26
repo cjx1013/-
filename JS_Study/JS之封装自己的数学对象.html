@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var myMath = {
+            PI:3.1415926535,
+            max:function(){
+                var maxValue = arguments[0];
+                for(var i = 0; i < arguments.length; i++){
+                    if(arguments[i]>maxValue){
+                        maxValue=arguments[i];
+                    }
+                }
+                return maxValue;
+            }
+
+        }
+        console.log(myMath.PI);
+        console.log(myMath.max(1,5,4));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            div{
+                width: 100px;
+                height: 20px;
+                border: 1px solid red;
+                white-space: nowrap;/*首先要添加这一行话，强制一行显示*/
+                overflow: hidden;/*其次必须要搭配这句话使用*/
+                /*text-overflow: clip;溢出的部分直接裁剪*/
+                text-overflow: ellipsis;/*溢出的部分用省略号代替*/
+            }
+    </style>
+</head>
+<body>
+    <div>我是刘德华，他是张学友</div>
+</body>
+</html>

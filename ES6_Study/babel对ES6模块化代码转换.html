@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        1、安装工具 npm init --yes
+        npm babel-cli babel-preset-env browserify -D
+        像之前的模块引入
+        <script src="./app.js" type="module"></script>
+        一是兼容性问题，并不是所有浏览器都支持src特性
+        二是ES6模块化还不能直接对npm安装的一些模块做一些导入
+        所以一般不会像这样直接引入，而是通过babel做一些转换
+        babel可以将ES比较新的语法，转换为浏览器能够识别的ES5的语法
+        2、npx babel js -d dist/js --presets=babel-preset-env  
+        3、打包npx browserify dist/js/app.js -o dist/bundle.js
+        当你修改app.js的代码时需要重新执行一遍2,3的代码
+    -->
+    <script src="dist/bundle.js"></script>
+</body>
+</html>

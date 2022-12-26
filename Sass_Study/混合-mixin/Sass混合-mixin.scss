@@ -1,0 +1,10 @@
+@mixin myColor {
+    background-color: pink;
+    a{
+        color: hotpink
+    }
+}
+
+.class{
+    @include myColor;
+}

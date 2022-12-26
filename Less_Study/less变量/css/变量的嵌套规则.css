@@ -1,0 +1,12 @@
+#father {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  background-color: pink;
+}
+#father .inner {
+  background-color: skyblue;
+}
+#father .inner:hover {
+  background-color: red;
+}

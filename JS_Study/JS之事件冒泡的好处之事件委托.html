@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈</li>
+    </ul>
+    <script>
+        //事件委托：不用为每个子节点设置监听器，而是给其父节点设置监听器，通过冒泡原理影响每一个子节点
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function (e) {
+            alert('dddd');//因为li在ul里，所以点每个li都会触发ul的事件
+            //另外，如果我想点哪个li，哪个li的背景颜色就改变，那么就需要用到之前学的e.target了
+            e.target.style.backgroundColor = 'pink';
+        })
+    </script>
+</body>
+</html>

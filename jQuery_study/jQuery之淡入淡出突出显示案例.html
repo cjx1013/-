@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery.min.js"></script>
+    <style>
+        body{
+            background-color: #000;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            width: 500px;
+            height: 300px;
+            list-style: none;
+            border: 2px solid #fff;
+            margin: 200px auto;
+        }
+        ul li{
+            width: 33.3%;
+            height: 50%;
+            border: 3px solid #000;
+            box-sizing: border-box;
+            float: left;
+            background-color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><img src="../images/01.jpg" style="width: 100%;"></li>
+        <li><img src="../images/02.jpg" style="width: 100%;"></li>
+        <li><img src="../images/03.jpg" style="width: 100%;"></li>
+        <li><img src="../images/04.jpg" style="width: 100%;"></li>
+        <li><img src="../images/05.jpg" style="width: 100%;"></li>
+        <li><img src="../images/06.jpg" style="width: 100%;"></li>
+    </ul>
+    <script>
+        $(function() {
+            $("ul li").hover(function(){
+                $(this).siblings().stop().fadeTo(400, .5);
+            }, function(){
+                $(this).siblings().stop().fadeTo(400, 1);
+            })
+        })
+    </script>
+</body>
+</html>

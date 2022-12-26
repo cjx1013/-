@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ceng{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 1px solid #000;
+            float: left;
+            margin: 10px;
+        }
+        .circle1{
+            background-image: radial-gradient(circle,yellow,green);/*默认是以圆的方式从中间开始渐变*/
+        }
+        .circle2{
+            background-image: radial-gradient(ellipse,yellow,green);/*以椭圆的方式从中间开始渐变*/
+        }
+        .circle3{
+            background-image: radial-gradient(circle at top,yellow,green);/*以圆的方式向上渐变，默认是center，top还可以换成bottom,left,right
+            left top（左上角），right bottom（右下角）等等*/
+        }
+        .circle4{
+            background-image: radial-gradient(20px circle at center,yellow,green);/*中间向外只渐变20px*/
+        }
+        .circle5{
+            background-image: radial-gradient(20px 50px ellipse at center,yellow,green);/*x轴渐变20px，y轴渐变50px,当设置x轴和y轴不同的时候，不能填
+            circle at ……，会失效，因为x轴y轴的值不一样，已经不是由圆的方式渐变了*/
+        }
+        .circle6{
+            background-image: radial-gradient(20px circle at center,yellow 60%,green,red 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="ceng circle1"></div>
+    <div class="ceng circle2"></div>
+    <div class="ceng circle3"></div>
+    <div class="ceng circle4"></div>
+    <div class="ceng circle5"></div>
+    <div class="ceng circle6"></div>
+</body>
+</html>

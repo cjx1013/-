@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+    <button>发送</button>
+    <textarea cols="30" rows="10"></textarea>
+    <script>
+        $("button").click(function () {
+            //callback=?虽然写的是问号，但是在发送请求时是有值的，也就说jQuery已经注册了这个函数
+            //只要在server.js中通过拼接字符串，返回这个函数的调用，返回之后浏览器一看这个代码可以执行
+            //就会解析，执行这个函数，就能拿到返回的数据
+            $.getJSON('http://127.0.0.1:8000/jquery-jsonp?callback=?', function (data) {
+                $("textarea").html(data.name);
+            })
+        })
+    </script>
+</body>
+</html>

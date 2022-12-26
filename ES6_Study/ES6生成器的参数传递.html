@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function * gen(arg){
+            console.log(arg);
+            let one = yield 111;
+            console.log(one);
+            let two = yield 222;
+            console.log(two);
+            let three = yield 333;
+            console.log(three);
+            
+        }
+        let iterator = gen('AAA');//生成器函数可以传参数
+        iterator.next();//同样光上面一条语句无法调用，需要用next方法
+        //next方法也可以传参数
+        iterator.next('BBB');//传参后，yield 111的返回值就是传的参数值BBB
+        iterator.next('CCC');//传参后，yield 222的返回值就是传的参数值CCC
+        iterator.next('DDD');//传参后，yield 333的返回值就是传的参数值DDD
+    </script>
+</body>
+</html>

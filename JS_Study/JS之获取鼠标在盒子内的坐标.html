@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 200px auto;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        //获取鼠标在盒子内的坐标，首先通过offsetLeft和offsetTop来得到盒子距离body的x轴和y轴距离
+        //（假设div没有设置了定位的父亲，那么它的设置了定位的父亲就是body），然后再减去盒子相对于
+        //body的x轴和y轴的距离就可以了
+        var div = document.querySelector('div');
+        div.addEventListener('mousemove', function(e) {
+            // console.log('x:'+e.pageX);
+            // console.log('y:'+e.pageY);
+            // console.log(div.offsetLeft);
+            var x = e.pageX - div.offsetLeft;
+            var y = e.pageY - div.offsetTop;
+            div.innerHTML = 'x轴坐标:' + x + ',y轴坐标:' + y;
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+$version: "1.1";
+/*版本号为 #{$version}*/
+
+$name: "info";
+$attr: "border";
+
+.class-#{$name}{
+    #{$attr}-color: #ccc
+}

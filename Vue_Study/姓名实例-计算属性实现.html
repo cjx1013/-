@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--
+        计算属性：
+            1、定义：要用的属性不存在，要通过已有属性计算得来，
+            而不是说变量，要是在Vue实例中管理的属性，不然你改变变量的值，Vue又监测不到变化，怎么计算属性
+            2、原理：底层借助了Object.defineproperty方法提供的getter和setter
+            3、get函数什么时候执行？
+                （1）初次读取时会执行一次
+                （2）当依赖的数据发生改变时会被再次调用
+            4、优势：与methods实现相比，内部有缓存机制（复用），效率更高，调试方便
+            5、备注：
+                1、计算属性最终会出现在vm上，直接读取使用即可！！！！！！
+                2、如果计算属性要被修改，那必须写set函数去响应修改，且set中要引起计算时依赖的数据发生改变
+
+    -->
+    <div id="root">
+        姓:<input type="text" v-model:value="firstName"><br>
+        名:<input type="text" v-model:value="lastName"><br>
+        <!-- 不要这样子，{{fullName.get()}}，不跟data和methods一样可以直接vm使用，不是说fullName你写的是对象，然后vm.fullName也是个对象 -->
+        <!-- fullName往vm身上放的时候是自动调用get，然后返回值放到fullName身上 -->
+        全名:<span>{{fullName}}</span>
+        <!-- 计算属性中存在着缓存，当你多次调用计算属性的fullName函数，get函数所依赖的数据没有发生变化时，get方法只会调用一次
+            而methods中并没有缓存 -->
+        <!--
+            全名:<span>{{fullName}}</span>
+            全名:<span>{{fullName}}</span>
+         -->
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                firstName: '张',
+                lastName: '三'
+            },
+            computed: {
+                
+                fullName: {//对象
+                    //get和set中的this，Vue已经帮你弄好，指向Vue实例了
+                    get() {
+                        // return firstName + '-' + lastName;//报错
+                        return this.firstName + '-' + this.lastName;
+                    },
+                    set(value) {
+                        // console.log(value);
+                        const arr = value.split('-');
+                        this.firstName = arr[0];
+                        this.lastName = arr[1];
+                    }
+                }
+           }
+       })
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const p1 = new Promise((resolve, reject)=>{
+            resolve('ok')
+        })
+        // const p2 = Promise.resolve('123')
+        const p2 = Promise.reject('123')
+        const p3 = Promise.resolve('ddd')
+
+        // 如果p1,p2,p3的结果都是成功的，那么result的结果就是成功的，值为p1,p2,p3的值形成的数组
+        // 如果p1,p2,p3的结果有一个是错误的，那么result的结果就是错误的，值为那个错误的promise对象的值
+        const result = Promise.all([p1, p2, p3])
+        console.log(result)
+    </script>
+</body>
+</html>

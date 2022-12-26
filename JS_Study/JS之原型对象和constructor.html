@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //每个函数都有一个prototype原型对象，可以理解为所有实例的公共祖先
+        //可以通过函数名.prototype，也可以通过实例名.__proto__访问到
+        function Fn() {
+            this.a = 1;
+        }
+        // Fn.prototype = {
+        //     aa: 2,
+        //     bb: function () {
+        //         console.log(3);
+        //     }
+        // }
+        var fn = new Fn();
+        console.log(fn.a);
+
+        //我们可以通过实例拿到原型对象上的数据，也就是说孩子可以拿到父亲的东西
+        // console.log(fn.aa);
+        // fn.bb();
+
+        console.log(fn.__proto__ === Fn.prototype);//true
+
+        //原型上还有原型，原型的终点是Object.prototype
+        console.log(Fn.prototype.constructor === Fn);//输出true，constructor是原型对象上的一个属性
+        //原型对象的constructor就是函数本身
+        //如果你自定义原型，那么原型的constructor属性就会消失，如将上面的
+        /*
+            Fn.prototype = {
+            aa: 2,
+            bb: function () {
+                console.log(3);
+            }
+        }取消注释
+        这会导致console.log(Fn.prototype.constructor === Fn)输出的是false
+        */
+
+       //而我们知道孩子是可以拿到父亲的东西的，就像前面的fn.aa,fn.bb();
+       //这里也是一样原型对象，Fn.prototype中默认有constructor属性
+       console.log(fn.constructor == Fn);//输出true，所以再一次验证了原型对象的constructor就是函数本身
+       //同样如果取消自定义原型的注释，constructor就没有了，输出就是false
+       //当你打印fn.constructor时，会发现原型对象Fn.prototype的constructor属性没有了，但是
+       //还是有打印结果，这时因为父亲没有了，就会去找爷爷，Fn的原型对象（祖先）在这里就是object，
+       //所以这里打印的是爷爷object的constructor
+       //所以，如果你想自定义原型，但是又想保留constructor且使得实例的原型对象是它爸爸，而不是它爷爷
+       //就得在自定义原型时指明，如：
+       /*
+            Fn.prototype = {
+            aa: 2,
+            bb: function () {
+                console.log(3);
+            }
+            constructor: Fn
+        }
+        */
+        
+        console.log(fn);
+    </script>
+</body>
+</html>

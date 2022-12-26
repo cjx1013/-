@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+	<head>
+		<title>实体符号</title>
+	</head>
+	<body>
+		<!--想要表达b<a>c b小于a，a大于c-->
+		b<a>c<!--失败，符号发生冲突>
+
+		<!--实体符号,特点是：以&开始，以;结束，&lt;是小于号，&gt; 是大于号 &nbsp;是空格-->
+		b&lt;a&gt;c <br>
+		a&nbsp;&nbsp;bc
+	</body>
+</html>

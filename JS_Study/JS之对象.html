@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*创建对象方法一*/
+        var dog = {
+                name: 'keke',
+                age: 5,
+                type: 'alasijia',
+                color: 'brown',
+                skill: function () {
+                    console.log('汪汪~');
+                    console.log('拍电影');
+                }
+            }
+            console.log('姓名:' + dog.name + '年龄:' + dog['age']);
+            dog.skill();
+
+        /*创建对象方法二*/
+        var mingren = new Object();
+        mingren.name='哪里痛';
+        mingren.age=19;
+        mingren.gender='男';
+        mingren.skill=function(){
+            console.log('影分身之术');
+        }
+        console.log(mingren.name);
+        console.log(mingren['age']);
+        mingren.skill();
+
+        /*创建对象方法三*/
+        function Star(uname, sex, age){
+            this.uname = uname;
+            this.sex = sex;
+            this.age  = age;
+            this.sing = function (sang) {
+                console.log('sing a song:'+sang);
+            }
+        }
+        var ldh = new Star('andy','男','60');
+        console.log(ldh.uname);
+        console.log(ldh['sex']);
+        console.log(ldh.age);
+        ldh.sing('冰雨');
+
+        /*遍历对象*/
+        for(var key in ldh){
+            console.log(key);//输出的是属性
+            console.log(ldh[key]);//输出的是属性值
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

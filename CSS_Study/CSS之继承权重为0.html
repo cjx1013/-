@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nav{           /*0,0,1,0*/
+            color: pink;
+        }                   
+        li{             /*0,0,0,1 这样乍一看是.nav的权重高，但是0010是nav的权重，
+                        不是li的，这是两个不同的选择器作用在两个不同的元素，作用在两个
+                        相同的元素再来比较权重，li是nav的后代，继承的权重为0，所以最后的
+                        颜色为skyblues*/
+            color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <ul>
+            <li>继承的权重为0</li>
+        </ul>
+    </nav>
+</body>
+</html>

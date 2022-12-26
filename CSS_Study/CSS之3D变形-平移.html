@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            perspective: 600px;
+        }
+        img{
+            display: block;
+            margin: 200px auto;
+            width: 200px;
+            transition: all 1s;
+        }
+        img:hover{
+            /*transform: translateX(100px);
+            transform: translateX(100px);*/
+            transform: translateZ(300px);
+            /*视距是眼睛到屏幕的距离，透视只是一种展示形式，
+            是有3d效果的意思，translateZ是物体到屏幕的距离
+            Z就是控制物体近大远小的具体情况，translateZ越大，
+            我们看到物体越近，物体越大*/
+        }
+
+    </style>
+</head>
+<body>
+    <img src="杨洋.jpeg" >
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve, reject)=>{
+            resolve('ok') //或reject()
+        })
+
+        p.then(value=>{
+            // 有且仅有一种方式中断promise链，返回一个pending状态的promise对象
+            // 既不是成功，也不是失败，那么then的对应的成功和失败的函数就不会调用
+            return new Promise(()=>{})
+        }).then(value=>{
+            console.log(value);
+        }).then(value=>{
+            console.log(123);
+        }).catch(reason=>{
+            console.warn(reason);
+        })
+    </script>
+</body>
+</html>

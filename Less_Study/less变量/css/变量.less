@@ -1,0 +1,21 @@
+//使用@来声明一个变量
+
+//作为属性值
+@pinkColor:pink;
+
+//作为属性名
+@m: margin;
+
+//作为选择器
+@selector666: #father;
+
+//作为url
+@myurl:'../../../images/杨洋.jpeg';
+
+@{selector666}{
+    width: 200px;
+    height: 200px;
+    @{m}: 0 auto;
+    background-color: @pinkColor;
+    // background-image: url('@{myurl}');
+}

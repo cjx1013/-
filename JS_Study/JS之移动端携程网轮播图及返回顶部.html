@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/index.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            max-width: 540px;/*最大宽度*/
+            min-width: 320px;/*最小宽度*/
+            margin: 0 auto;
+        }
+        ul{
+            list-style: none;
+        }
+        header{
+            position: relative;
+            overflow: hidden;
+        }
+        header img{
+            width: 100%;
+            height: 100%;
+        }
+        header ul{
+            width: 500%;
+            overflow: hidden;/*ul没有高度，里面的li又浮动了，为了避免li影响其他盒子于是清除浮动*/
+            margin-left: -100%;
+        }
+        header ul li{
+            width: 20%;
+            float: left;
+        }
+        .circle{
+            list-style: none;
+            position: absolute;
+            right: 10px;
+            top: 80px;
+        }
+        .circle li{
+            width: 5px;
+            height: 5px;
+            background-color: pink;
+            display: inline-block;
+            border-radius: 5px;
+            transition: all .3s;
+        }
+        .circle .current{
+            background-color: #ff697a;
+            width: 15px;
+
+        }
+        nav{
+            padding: 5px;
+            position: relative;
+        }
+        .goBack{
+            width: 50px;
+            height: 50px;
+            position: fixed;
+            background: url(../images/back.png) no-repeat;
+            background-size: cover;
+            right: 5px;
+            bottom: 100px;
+            display: none;
+        }
+        .row{
+            width: 100%;
+            height: 90px;
+            background-color: #ff697a;
+            border-radius: 8px;
+            display: flex;/*伸缩布局，给父亲添加*/
+            margin-bottom: 5px;
+        }
+        .row:nth-child(2){
+            background-color: #3d98ff;
+        }
+        .row:nth-child(3){
+            background-color: #44c522;
+        }
+        .row:nth-child(4){
+            background-color: #fc9720;
+        }
+        .row3{
+            flex: 1;/*每个占一份，本来三个row3是垂直的占着，给了flex后，
+            由于flex默认是水平布局，所以三个row3就变成了水平占着*/
+            border-left: 1px solid #fff;
+        }
+        .row div:first-child{
+            border: 0;
+        }
+        .hotel{
+            display: flex;
+            flex-direction: column;
+        }
+        .hotel a{
+            flex: 1;
+            text-decoration: none;
+            font-size: 16px;
+            color: #fff;
+            line-height: 45px;
+            text-align: center;
+            text-shadow: 0 2px 1px rgba(0, 0, 0, .3);
+        }
+        .hotel a:first-child{
+            border-bottom: 1px solid #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <ul><!--为了达到在第一张图片往左拉动显示最后一张图片，
+            所以在第一张图片前面加一个最后一张图片
+        同理，最后一张图片后面加一个第一张图片-->
+            <li><img src="../images/focus3.jpg"></li>
+            <li><img src="../images/focus1.jpg"></li>
+            <li><img src="../images/focus2.jpg"></li>
+            <li><img src="../images/focus3.jpg"></li>
+            <li><img src="../images/focus1.jpg"></li>
+        </ul>
+        <ol class="circle">
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </header>
+    <nav>
+        <div class="goBack"></div>
+        <div class="row displayGoBack">
+            <div class="row3"></div>
+            <div class="row3 hotel">
+                <a href="#">海外酒店</a>
+                <a href="#">特价酒店</a>
+            </div>
+            <div class="row3 hotel">
+                <a href="#">团购</a>
+                <a href="#">同福客栈</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row3"></div>
+            <div class="row3 hotel">
+                <a href="#">海外酒店</a>
+                <a href="#">特价酒店</a>
+            </div>
+            <div class="row3 hotel">
+                <a href="#">团购</a>
+                <a href="#">同福客栈</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row3"></div>
+            <div class="row3 hotel">
+                <a href="#">海外酒店</a>
+                <a href="#">特价酒店</a>
+            </div>
+            <div class="row3 hotel">
+                <a href="#">团购</a>
+                <a href="#">同福客栈</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row3 hotel">
+                <a href="#">海外酒店</a>
+                <a href="#">特价酒店</a>
+            </div>
+            <div class="row3 hotel">
+                <a href="#">海外酒店</a>
+                <a href="#">特价酒店</a>
+            </div>
+            <div class="row3 hotel">
+                <a href="#">团购</a>
+                <a href="#">同福客栈</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row3 hotel">
+                <a href="#">海外酒店</a>
+                <a href="#">特价酒店</a>
+            </div>
+            <div class="row3 hotel">
+                <a href="#">海外酒店</a>
+                <a href="#">特价酒店</a>
+            </div>
+            <div class="row3 hotel">
+                <a href="#">团购</a>
+                <a href="#">同福客栈</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row3 hotel">
+                <a href="#">海外酒店</a>
+                <a href="#">特价酒店</a>
+            </div>
+            <div class="row3 hotel">
+                <a href="#">海外酒店</a>
+                <a href="#">特价酒店</a>
+            </div>
+            <div class="row3 hotel">
+                <a href="#">团购</a>
+                <a href="#">同福客栈</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="row3 hotel">
+                <a href="#">海外酒店</a>
+                <a href="#">特价酒店</a>
+            </div>
+            <div class="row3 hotel">
+                <a href="#">海外酒店</a>
+                <a href="#">特价酒店</a>
+            </div>
+            <div class="row3 hotel">
+                <a href="#">团购</a>
+                <a href="#">同福客栈</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row3 hotel">
+                <a href="#">海外酒店</a>
+                <a href="#">特价酒店</a>
+            </div>
+            <div class="row3 hotel">
+                <a href="#">海外酒店</a>
+                <a href="#">特价酒店</a>
+            </div>
+            <div class="row3 hotel">
+                <a href="#">团购</a>
+                <a href="#">同福客栈</a>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

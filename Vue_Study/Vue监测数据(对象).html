@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Vue监测原理实际上就是靠setter,getter方法，当有人动了，或者读取了这个数据就会调用setter方法 -->
+    <script>
+        //模拟Vue的监测数据
+        let data = {
+            name: 'cjx',
+            address: '北京'
+        }
+
+        //创建一个监视的实例对象，用于监视data中属性的变化，而不是直接通过Object.defineProperty
+        //设置setter和getter，这样会出问题，如给name设置setter和getter
+        // Object.defineProperty(data, 'name', {
+        //     get() {
+        //         return data.name;
+        //     },
+        //     set(val) {
+        //         data.name = val;
+        //     }
+        // })
+        //这样会导致当读取name调用get或者修改name调用set时一直读取或修改，
+        //因为第一次，我去读，然后返回data.name,而return中的data.name不又是读取name么
+        //然后又调用get，这样死循环，set也是同理，修改name的值，set调用，set一调用，
+        // data.name又被修改，又调用set，死循环
+
+        // 创建一个监视的实例对象，用于监视data中属性的变化
+        const obs = new Observer(data);
+        // console.log(obs); 
+        //准备一个vm实例对象
+        let vm = {};
+        //将obs对象赋值给data和vm._data
+        data = obs;
+        vm._data = data;//模拟Vue，Vm._data是域data相等的
+
+        function Observer(obj) {
+            //汇总对象中所有的属性形成一个数组
+            const keys = Object.keys(obj);
+            //遍历
+            keys.forEach((k)=>{
+                Object.defineProperty(this, k, {
+                    //this是Observer实例对象
+                    get() {
+                        return obj[k];
+                    },
+                    set(val) {
+                        //Vue在这里不是输出，而是去重新解析模板，生成虚拟DOM，对比新旧虚拟DOM，生成新的真实DOM，展示在页面上
+                        console.log(`${k}被改了，我要去解析模板，生成虚拟DOM，对比……，我要开始忙了`);
+                        obj[k] = val;
+                    }
+
+                })
+            })
+        }
+
+        //Vue做的比这个更为完善，如数据代理，可以直接vm.xxx来修改读取data的数据
+        //另外我们没有考虑对象中还有对象，当对象中还有对象，那么深层的对象并没有
+        //监测，没有setter和getter监测它的变化，而Vue能，因为它底层写了个递归，
+        //一直找，直到找到不是对象为止，而且对象数组的对象都能找出来，都有setter和getter
+    </script>
+</body>
+</html>

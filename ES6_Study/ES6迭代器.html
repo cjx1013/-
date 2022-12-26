@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const xiyou = ['唐僧', '孙悟空', '猪八戒', '沙僧'];
+        //使用for……in遍历数组
+        for(let v in xiyou){
+            console.log(v);//用for……in循环，这里的v就是每个数组元素的下标
+            console.log(xiyou[v]);//xiyou[v]才是值
+        }
+        //使用for……of遍历数组
+        for(let v of xiyou){
+            console.log(v);//用for……of循环，这里的v直接就是每个数组元素的值
+        }
+
+        //迭代器
+        //创建一个指针对象
+        let iterator = xiyou[Symbol.iterator]();
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+
+    </script>
+</body>
+</html>

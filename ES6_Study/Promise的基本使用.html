@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //实例化Promise对象,这个对象p有三种状态：初始化、成功、失败
+        const p = new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                // let data = '数据库中的用户数据';
+                // resolve(data);//调用resolve后，p的状态变为成功，就可以调用p对象的then方法
+                let err = '数据读取失败';
+                reject(err);
+            }, 1000);
+        })
+        //成功的形参一般叫value，失败的形参一般叫reason
+        p.then(function (value){//then方法两个参数都是函数
+            //当p状态为成功时，也就是调用resolve时，会调用这个函数
+            console.log(value);
+        }, function (reason) {
+            //当p状态为失败时，也就是调用reject时，会调用这个函数
+            console.error(reason);
+        })
+        
+    </script>
+</body>
+</html>

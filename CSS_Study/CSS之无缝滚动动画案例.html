@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        nav{
+            width: 400px;
+            height: 80px;
+            margin: 200px auto;
+            border: 1px solid pink;
+            overflow: hidden;
+        }
+        nav ul{
+            width: 200%;
+            animation: moving 3s linear infinite;/*引用动画*/
+        }
+        /*定义动画*/
+        @keyframes moving{
+            from{
+                transform: translateX(0);
+            }
+            to{
+                transform: translateX(-400px);
+            }
+        }
+        nav ul li{
+            float: left;
+        }
+        nav ul img{
+            width: 100px;
+        }
+        nav:hover ul{
+            animation-play-state: paused;/*鼠标移到nav上就暂停动画*/
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><img src="jingdong1.jpg"></li>
+            <li><img src="jingdong2.jpg"></li>
+            <li><img src="jingdong3.jpg"></li>
+            <li><img src="jingdong4.jpg"></li>
+            <li><img src="jingdong1.jpg"></li>
+            <li><img src="jingdong2.jpg"></li>
+            <li><img src="jingdong3.jpg"></li>
+            <li><img src="jingdong4.jpg"></li>
+        </ul>
+    </nav>
+</body>
+</html>

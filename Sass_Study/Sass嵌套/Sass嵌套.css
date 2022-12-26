@@ -1,0 +1,13 @@
+.nav {
+  height: 100px;
+}
+
+.nav ul {
+  margin: 0;
+}
+
+.nav ul li {
+  float: left;
+  list-style: none;
+  padding: 5px;
+}

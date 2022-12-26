@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .star{/*五角星实际上就是三个三角形拼接而成*/
+            margin: 200px auto;
+            width: 0;
+            height: 0;
+            border-bottom: 70px solid #f00;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            transform: rotate(35deg);
+            position: relative;
+        }
+        .star::before{
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-bottom: 80px solid #f00;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            transform: rotate(-35deg);
+            top: -45px;
+            left: -65px;
+        }
+        .star::after{
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-bottom: 70px solid #f00;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            transform: rotate(-70deg);
+            top:3px;
+            left: -105px;
+        }
+    </style>
+</head>
+<body>
+    <div class="star"></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #form div{
+            display: flex;
+            height: 50px;
+            align-items: flex-start;
+            /*align-items: stretch;默认就是stretch，弹性伸缩，所以
+            设置height:50px;时div里面的元素的高度也会自适应变成50px
+            此时将它的属性值改成flex-start，变成交叉轴的起点对齐，来达到设置margin同样的效果
+            也就是高度剩余法*/
+        }
+        #form div label{
+            flex:0 0 100px;
+            text-align: right;
+            
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div id="form">
+            <div>
+                <label>姓名:</label>
+                <input type="text">
+            </div>
+            <div>
+                <label>请输入密码:</label>
+                <input type="text">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

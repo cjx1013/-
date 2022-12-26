@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let user = {
+            name: 'cjx',
+            age: 18,
+            up: function () {console.log('up');},
+            down: function () {console.log('down');}
+        }
+        //给user对象添加up和down方法
+        //有可能对象结构复杂，且对象原本有可能有up和down方法
+        //如果直接user.up = function () {}可能会有冲突
+        //这时可以用Symbol来生成一个唯一的属性或方法
+        //声明一个对象
+        let method = {
+            up: Symbol(),
+            down: Symbol()
+        }
+        user[method.up] = function() {
+            console.log('我可以');
+        }
+        user[method.down] = function () {
+            console.log('我不可以');
+        }
+        console.log(user);
+    </script>
+</body>
+</html>

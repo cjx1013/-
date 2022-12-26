@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/todolist.js"></script>
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <style>
+        body{
+            background-color: rgb(109, 147, 126);
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul, ol{
+            list-style: none;
+        }
+        header{
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.8);
+            line-height: 50px;
+
+        }
+        header span{
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 100px 0 500px;
+        }
+        header input{
+            width: 400px;
+            height: 25px;
+            border-radius: 6px;
+            margin-left: 100px;
+            outline: none;
+        }
+        .content{
+            width: 700px;
+            margin: 50px auto;
+        }
+        .con{
+            position: relative;
+        }
+        .con span:first-child{
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+        }
+        .count1, .count2{
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+            position: absolute;
+            right: 5px;
+        }
+        .countStyle{
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .con li{
+            width: 100%;
+            height: 30px;
+            border-radius: 6px;
+            background-color: #fff;
+            margin: 20px 0;
+            line-height: 30px;
+            position: relative;
+        }
+        .con li a{
+            position: absolute;
+            right: 5px;
+            color: #000;
+
+        }
+        .con input[type=checkbox]{
+            margin-left: 5px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <span>ToDoList</span>
+        <input type="text" placeholder="添加ToDo">
+    </header>
+    <div class="content">
+        <div class="con">
+            <span>正在进行</span>
+            <span class="count1"></span>
+            <ol>
+                <!-- <li>
+                    <input type="checkbox">
+                    <span>6666</span>
+                    <a href="#"><i class="fa fa-times"></i></a>
+                </li> -->
+                
+            </ol>
+        </div>
+        <div class="con">
+            <span>已经完成</span>
+            <span class="count2"></span>
+            <ul>
+                <!-- <li>
+                    <input type="checkbox">
+                    <span>6666</span>
+                    <a href="#"><i class="fa fa-times"></i></a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+    <script>
+        // var o = [{
+        //     'title': '我我我',
+        //     age: 8
+        // },{
+        //     'title': '他他他',
+        //     age: 10
+        // }];
+        // localStorage.setItem("o", JSON.stringify(o));//本地存储只能存储字符串,所以不能直接村对象
+        //需要把对象转换为字符串格式,JSON.stringify()，再去存储
+        // console.log(localStorage.getItem("o"));
+        //如果需要获取本地存储的数据，那么需要将字符串转化为对象格式，JSON.parse()
+        // console.log(JSON.parse(localStorage.getItem("o")));
+
+    </script>
+</body>
+</html>

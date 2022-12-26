@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // "..."  扩展运算符能将数组转换为逗号分隔的参数序列
+        const tf = ['易烊千玺', '王源', '王俊凯'];
+        function chunwan() {
+            console.log(arguments);
+        }
+        chunwan(tf);//此时输出的arguments中只有一个元素，那就是一个数组
+        // chunwan(...tf);//等价于chuanwan('易烊千玺', '王源', '王俊凯');
+        //此时输出的arguments中有三个元素
+    </script>
+</body>
+</html>

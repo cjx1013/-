@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let templateStr = `我买了一个{{thing}}，价格是{{price}}`
+        let data = {
+            thing: '华为手机',
+            price: '8888'
+        }
+
+        function render(templateStr, data) {
+            // 实际上使用的就是正则表达式的replace方法
+            return templateStr.replace(/\{\{(\w+)\}\}/g, function(a, b, c, d) {
+                // console.log(a, b, c, d);
+                // a是匹配的内容，b是捕获的内容，就是正则表达式()里的东西，这里是\w+，也就是
+                // {{}}里的内容，c是捕获的内容的下标，d是整个templateStr
+
+                // 替换捕获的内容
+                return data[b]
+            })
+        }
+        console.log(render(templateStr, data))
+    </script>
+</body>
+</html>

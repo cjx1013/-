@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve, reject)=>{
+            resolve('ok') //或reject()
+        })
+
+        // then方法返回的结果，由then指定的回调函数的执行的结果决定
+        // 也就是说，上面调用的是resolve，那么then的结果就由value=>{}这个函数的
+        // 执行结果决定，上面调用的是reject，那么then的结果就由reason=>{}这个函数的
+        // 执行结果决定
+
+        // 而value=>{}，reason=>{}的执行结果又有三种情况
+        // 1、抛出错误，结果为失败
+        // 2、返回的是非promise类型对象，结果为成功，其值就为该非promise类型对象的值
+        // 3、返回的是promise类型对象，结果取决于promise对象的状态
+        let result = p.then(value=>{
+            // console.log(value);
+            // throw '除了问题'
+            // return '123'
+            return new Promise((resolve, reject)=>{
+                // resolve('success')
+                reject('error')
+            })
+
+        }, reason=>{
+            console.log(reason);
+        })
+        console.log(result);
+    </script>
+</body>
+</html>

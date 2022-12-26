@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 100px;
+            border: 1px solid pink;
+        }
+    </style>
+</head>
+<body>
+    <button>发送请求</button>
+    <div></div>
+    <script>
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        btn.addEventListener('click', function () {
+           //创建对象
+           const xhr = new XMLHttpRequest();
+           //初始化 设置请求方法和url
+           xhr.open('GET', 'http://127.0.0.1:8000/ie?t=' + Date.new());//因为在修改服务端代码后，
+           //ie浏览器存在缓存问题，会导致修改了服务端，但结果还是上一次的，这时可以在url后设置这个参数即可
+           //发送
+           xhr.send();
+           //处理服务端返回结果
+           if(xhr.onreadystatechange === 4){
+                if(xhr.status >= 200 && xhr.status < 300){
+                    console.log(xhr.response);
+                }
+           }
+        })
+    </script>
+</body>
+</html>

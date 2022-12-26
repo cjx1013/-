@@ -1,0 +1,19 @@
+$flag: true;
+$theme: "light";
+
+body{
+    @if $theme == dark{
+        background-color: black;
+    }@else if $theme == light{
+        background-color: white
+    }@else{
+        background-color: gray;
+    }
+}
+
+.class1{
+    @if $flag{
+        font-size: 18px;
+    }
+    border-radius: 5px;
+}

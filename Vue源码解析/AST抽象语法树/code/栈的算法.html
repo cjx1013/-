@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 将2[1[a]3[b]]变为abbbabbb
+        let templateStr = '2[1[a]3[b]]'
+
+        function smartRepeat(templateStr) {
+            // 指针
+            let index = 0
+            // 栈1，存放数字
+            let stack1 = []
+            // 栈2，存放临时字符串
+            let stack2 = []
+    
+            // 尾部，表示未处理部分，一开始为整个字符串
+            let tail = templateStr
+
+            while(index < templateStr.length - 1) {
+                tail = templateStr.substring(index)
+                
+                // 当尾部以数字和左方括号[开头，也就是遇到了数字和左方括号[
+                if(/^\d+\[/.test(tail)) {
+                    // 由于加了()，所以
+                    // 能捕获到\d+，也就是一个或多个数字，match会返回
+                    // 一个数组，数组下标为1的内容就是捕获的内容
+                    // 得到这个数字
+                    let times = Number(tail.match(/^(\d+)\[/)[1])
+                    // console.log(times);
+                    // 指针后移数字的长度位数，加1是也要后移左方括号[的长度
+                    index += times.toString().length + 1
+
+                    // 将得到的这个压入栈1中，同时把一个空字符串压栈2
+                    stack1.push(times)
+                    stack2.push('')
+                }else if(/^\w+\]/.test(tail)){
+                    // 如果是遇到了字母，则将栈2栈顶的空字符串改为遇到的这个字母
+                    // 得到这个字母
+                    let word = tail.match(/^(\w+)/)[1]
+                    // 将栈2栈顶的空字符串改为遇到的这个字母
+                    stack2[stack2.length - 1] = word
+                    // 指针后移这个字母的长度
+                    index += word.length
+                }else if(tail[0] == ']'){
+                    // 遇到了右方括号]
+                    // 栈1弹栈
+                    let times = stack1.pop()
+                    // 栈2弹栈
+                    let word = stack2.pop()
+                    // 将栈2弹栈的字母重复栈1弹栈的次数，并拼接到此时栈2的栈顶字符串上
+                    stack2[stack2.length - 1] += word.repeat(times)
+                    index++
+                }
+                // console.log(stack1, stack2);
+            }
+            // while结束后，栈1和栈2各有一项剩余，将栈2的那项的字符串重复栈1的那项的指定次数就可以了
+            // 如果不是，那么就是输入的内容有错误，比如少了个右方括号
+            return stack2[0].repeat(stack1[0])
+            
+        }
+        console.log(smartRepeat(templateStr))
+    </script>
+</body>
+</html>

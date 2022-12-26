@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        //x,y记录当前位置
+        var x = 0;
+        var y = 0;
+        //startX，startY记录手指起始位置
+        var startX = 0;
+        var startY = 0;
+        //手指触摸div时
+        div.addEventListener('touchstart', function(e) {
+            startX = e.targetTouches[0].pageX;
+            startY = e.targetTouches[0].pageY;
+            x = this.offsetLeft;
+            y = this.offsetTop;
+        })
+        //手指移动时
+        div.addEventListener('touchmove', function(e) {
+            //得到手指移动后的位置减去手指起始位置再加上元素起始位置就是元素移动后的位置
+            var moveX = e.targetTouches[0].pageX - startX;
+            var moveY = e.targetTouches[0].pageY - startY;
+            this.style.left = moveX + x + 'px';
+            this.style.top = moveY + y + 'px';
+            //手指移动也会触发滚动屏幕，所以这里要阻止默认的屏幕滚动e.preventDefault();
+            e.preventDefault();
+        })
+
+    </script>
+</body>
+</html>

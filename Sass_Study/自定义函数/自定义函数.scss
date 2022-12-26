@@ -1,0 +1,9 @@
+$colors: (light: #fff, dark: #000);
+
+@function color($key){
+    @return map-get($colors, $key);
+}
+
+body{
+    background-color: color(light);
+}

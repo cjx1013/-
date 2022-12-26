@@ -1,0 +1,19 @@
+/*不带输出的混合则不会将混合内容在编译生成的css中输出，如这里的.sonStyle*/
+.sonStyle(){
+    width: 50px;
+    height: 50px;
+    margin: 20px auto;
+    background-color: skyblue;
+}
+#father{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background-color: pink;
+    .class1{
+        .sonStyle();
+    }
+    .class2{
+        .sonStyle();
+    }
+}

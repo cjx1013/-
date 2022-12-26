@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/xuni/bundle.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        // let templateStr = `<h3>我买了一个{{thing}}，价格是{{price}}，重{{m.n.p}}g</h3>`
+        let templateStr = `
+            {{#arr}}
+                <li>名字: {{name}}</li>
+                <li>年龄: {{age}}</li>
+                <li>爱好: 
+                    {{#hobbies}}
+                        <ol>
+                            <li>{{.}}</li>
+                        </ol>    
+                    {{/hobbies}}    
+                </li>
+            {{/arr}}
+        `
+        let data = {
+            arr:[
+                {'name': '小明', 'age': '12', 'hobbies': ['唱', '跳']},
+                {'name': '小黄', 'age': '16', 'hobbies': ['rap']}
+            ]
+        }
+        let domStr = cjx_templateEngine.render(templateStr, data)
+        let container = document.getElementById('container')
+        container.innerHTML = domStr
+    </script>
+</body>
+</html>

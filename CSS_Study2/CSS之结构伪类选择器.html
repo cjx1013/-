@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        ul li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            background-color: pink;
+            margin: 5px;
+            text-align: center;
+        }
+        .ul1 li :nth-child(n+3){/*第三个之后所有孩子*/
+            background-color: skyblue;
+        }
+        .ul2 li:nth-child(3){/*此时第三个孩子确实第二个li换色了，因为p也是孩子了*/
+            background-color: red;
+        }
+        .ul2 li:nth-of-type(3){/*而这种，会选择li类型的第三个孩子*/
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <ul class="ul1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <ul class="ul2">
+        <p>0</p>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</body>
+</html>

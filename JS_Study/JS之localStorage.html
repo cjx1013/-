@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="text">
+    <button class="set">存储数据</button>
+    <button class="get">获得数据</button>
+    <button class="del">删除数据</button>
+    <button class="clear">删除所有数据</button>
+    <script>
+        var input = document.querySelector('input');
+        var val;
+        var set = document.querySelector('.set');
+        var get = document.querySelector('.get');
+        var del = document.querySelector('.del');
+        var cl = document.querySelector('.clear');
+        set.addEventListener('click', function() {
+            val = input.value;
+            localStorage.setItem('uname',val);
+            localStorage.setItem('pwd',val);
+        })
+        get.addEventListener('click', function() {
+            console.log(localStorage.getItem('uname'));
+        })
+        del.addEventListener('click', function() {
+            localStorage.removeItem('pwd');
+        })
+        cl.addEventListener('click', function() {
+            localStorage.clear();
+        })
+    </script>
+</body>
+</html>

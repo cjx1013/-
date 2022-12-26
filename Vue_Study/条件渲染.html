@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--
+        条件渲染：
+            1、v-if
+                写法：
+                    （1）v-if="表达式"
+                    （2）v-else-if="表达式"
+                    （3）v-else="表达式"
+                适用于：切换频率较低的场景
+                特点：不展示的DOM元素直接被移除
+                注意：v-if可以和v-else-if、v-else一起使用，但要求结构不能被打断
+                打断就是如
+                <div v-if=""></div>
+                <div></div>
+                <div v-else-if=""></div>
+                <div v-else=""></div>
+            2、v-show
+                写法：v-show="表达式"
+                适用于：切换频率较高的场景
+                特点：不展示的DOM元素未被移除，仅仅是使用样式隐藏掉
+            3、备注：使用v-if时，元素可能无法获取到，因为v-if的表达式值为false的话
+            它会直接移除，删掉元素，以后可能就获取不掉了
+            而使用v-show一定能获取到，因为它只是隐藏元素，而节点还是存在那
+    -->
+    <!--
+        切换频率高用v-show好一点，因为它只是显示和隐藏元素
+        而v-if是删除和添加节点，如n=1,<div v-if="n===1">123</div>则会创建div，否则删除div
+    -->
+    <div id="root">
+        <span>当前n值:{{n}}</span>
+        <button @click="n++">点击n+1</button>
+        <!--使用v-show做条件渲染-->
+        <h2 v-show="true">欢迎来到{{name}}</h2>
+        <h2 v-show="1===1">欢迎来到{{name}}</h2>
+        <!--使用v-if做条件渲染-->
+        <h2 v-if="false">欢迎来到{{name}}</h2>
+        <h2 v-if="1==1">欢迎来到{{name}}</h2>
+
+        <!--表达式为n==1,那么会在vm上看看有没有n，后判断-->
+        <div v-if="n==1">n==1,我出来了</div><!--跟js的if，else if，else逻辑一样，当if条件满足时，便不会看后面的else if和else-->
+        <div v-else-if="n==2">n==2,我出来了</div>
+        <div v-else>n!=1,n!=2,我出来了</div>
+        
+        <!--满足条件添加3个h2
+            既然是添加3个h2标签，那么用v-if，因为v-show是h2本来存在
+            只不过是显示，如果用div包着，那么会额外加一个div，这是不想要的
+            <div v-if="n==1">
+                <h2>北京</h2>
+                <h2>上海</h2>
+                <h2>天津</h2>
+            </div>
+            此时可以用template，等到h2添加上去后，会自动消失,但是template要搭配v-if使用
+            不能跟v-show一起使用
+        -->
+        <template v-if="n===1">
+            <h2>北京</h2>
+            <h2>上海</h2>
+            <h2>天津</h2>
+        </template>
+
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                name: '英雄联盟',
+                n: 0
+            }
+           
+        })
+    </script>
+</body>
+</html>

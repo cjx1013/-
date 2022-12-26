@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list">
+    </ul>
+    <script>
+        const arr = [
+            {'name': '小明', 'age': '12'},
+            {'name': '小黄', 'age': '16'}
+        ]
+        let list = document.getElementById('list')
+        for(let i = 0; i < arr.length; i++) {
+            // 使用innerHTML插入字符串，而数组的join方法可以连接字符串
+            // 字符串写的时候可以有换行等，结构清晰，但是生成的字符串不会包含换行等
+           list.innerHTML += [
+            '<li>',
+            '    <p>姓名: '+ arr[i].name +'</p>',
+            '    <p>年龄: '+ arr[i].age +'</p>',
+            '</li>'
+           ].join('')
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--
+        关于VueComponent(拿定义的school组件举例)：
+            1、school组件本质是一个名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的
+            2、我们只需要写<school></school>或</school>，Vue解析时会帮我们创建school组件的实例对象
+            3、特别注意：每次调用Vue.extend，返回的都是一个全新的VueComponent！！！！
+            4、关于this指向
+                （1）组件配置中
+                    data函数、methods中的函数、watch中的函数、computed中的函数 它们的this均是VueComponent实例对象
+                （2）new Vue()配置中
+                    data函数、methods中的函数、watch中的函数、computed中的函数 它们的this均是Vue实例对象
+            5、VueComponent的实例对象，以后简称vc（也可称之为：组件实例对象）
+            Vue的实例对象，以后简称为vm
+            VueComponent实例对象跟vm实例对象是十分相似，也有数据代理，数据监视，_data等，组件就是VueComponent实例对象
+            vm管理着VueComponent
+    -->
+    <div id="root">
+        <school></school>
+        <student></student>
+    </div>
+    <script>
+        const school = Vue.extend({
+            template:`
+                <div>
+                    <h3>{{name}}</h3>
+                    <button @click="showName">点击打印this</button>
+                </div>
+            `,
+            data() {
+                return {
+                    name: '东大'
+                }
+            },
+            methods: {
+                showName() {
+                    console.log(this);
+                }
+            }
+        })
+        const student = Vue.extend({
+            template: `
+                <div>
+                    <h3>{{msg}}</h3>
+                </div>
+            `,
+            data() {
+                return {
+                    msg: 'student'
+                }
+            },
+        })
+        console.log(school);
+        console.log(school == student);//每次调用Vue.extend，返回的都是一个全新的VueComponent
+        new Vue({
+            el: '#root',
+            components: {
+                school,
+                student
+            },
+        })
+    </script>
+</body>
+</html>

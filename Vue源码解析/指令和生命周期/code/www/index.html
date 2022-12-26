@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/xuni/bundle.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{b.m.n}}<br/>
+        <input type="text" v-model="b.m.n">
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                a: 10,
+                b: {
+                    m: {
+                        n: 7
+                    }
+                }
+            },
+            watch: {
+                a() {
+                    console.log('a改变了');
+                }
+            }
+        })
+        console.log(vm);
+    </script>
+</body>
+</html>

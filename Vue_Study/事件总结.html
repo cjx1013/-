@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .son{
+            display: block;
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            background-color: aquamarine;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+
+    <div id="root">
+        <h2>欢迎{{name}}</h2>
+        <div class="father" @click.self="showInfo1">
+            <!--事件修饰符可以连着写，比如既阻止冒泡，又阻止默认行为-->
+            <a href="http://www.baidu.com" class="son" @click.stop.prevent="showInfo2"></a>
+        </div> 
+        <!--按下组合键，比如ctrl+y-->
+        <input type="text" placeholder="按下ctrl+y弹出信息" @keyup.ctrl.y="showInfo">
+        
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                name: 'cjx'
+            },
+            methods: {
+                showInfo(e) {
+                    alert(e.target.value);
+                },
+                showInfo1() {
+                    alert('father');
+                },
+                showInfo2() {
+                    alert('son');
+                }
+            }
+
+        })
+
+    </script>
+</body>
+</html>

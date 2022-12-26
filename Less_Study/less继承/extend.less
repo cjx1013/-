@@ -1,0 +1,44 @@
+.myColor{
+    background-color: pink;
+}
+.myColor:hover{
+    background-color: red;
+}
+
+.border{
+    border: 1px solid hotpink;
+}
+
+.class1:extend(.myColor){//没有加all，那么只会继承.myColor里的样式，而.myColor:hover的样式不会继承
+    width: 90px;
+    height: 100px;
+}
+.class2:extend(.myColor all){//加个all表示将于myColor相关的所有样式继承
+    width: 90px;
+    height: 100px;
+}
+.class3:extend(.myColor, .border){//继承多个第一种写法
+    width: 80px;
+    height: 90px;
+}
+.class4:extend(.myColor):extend(.border){//继承多个第二种写法
+    width: 80px;
+    height: 90px;
+}
+
+.father{
+    width: 100px;
+    height: 100px;
+    .inner{
+        &:extend(.myColor);
+        &:nth-child(1){
+            width: 50px;
+            height: 60px;
+        }
+        &:nth-child(2){
+            width: 70px;
+            height: 80px;
+        }
+    }
+    
+}

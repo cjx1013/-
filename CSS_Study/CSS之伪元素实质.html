@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div::before{
+            content: "鹿晗";
+            background-color: pink;
+            border: 1px solid red;
+            width: 100px;
+            height: 100px;
+            display: block;
+            /*类选择 伪类选择器 就是选取对象
+            伪元素选择器 本质上就是插入一个元素（标签/盒子），
+            只不过是行内元素*/
+        }
+        div::after{
+            content: "帅哥";
+            background-color: hotpink;
+            border: 1px solid red;
+            width: 50px;
+            height: 50px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div>是</div>
+</body>
+</html>

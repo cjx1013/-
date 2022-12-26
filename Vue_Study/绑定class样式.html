@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .base{
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ccc;
+            
+        }
+        .normal{
+            background-color: skyblue;
+        }
+        .happy{
+            background-color: pink;
+        }
+        .sad{
+            background-color: green;
+        }
+        .s1{
+            border: 5px solid green;
+            background-color: red;
+        }
+        .s2{
+            border-color: purple;
+            background-color: red;
+        }
+        .s3{
+            border-radius: 10px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="root">
+        <!--:class是v-bind:class的缩写-->
+        <!--绑定class样式---字符串写法，适用于：样式的类名不确定，需要动态指定-->
+        <div class="base" :class="mood" @click="changeColor">点击切换颜色</div>
+
+        <!--绑定class样式---数组写法，适用于：样式的类名不确定，个数也不确定-->
+        <div class="base" :class="classArr">
+            <button @click="removeStyle">点击删除第一个样式</button>
+        </div>
+
+        <!--绑定class样式---对象写法，适用于：样式的类名确定，个数也确定，但要动态决定用不用-->
+        <div class="base" :class="classObj"></div>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                mood: 'normal',
+                classArr: ['s1', 's2', 's3'],
+                classObj:{
+                    s1: true,//为false就是不应用，为true就是应用
+                    s2: false,
+                    s3: true
+                }
+            },
+            methods: {
+                changeColor() {
+                    const arr = ['happy', 'normal', 'sad'];
+                // Math.floor(Math.random()*3)//Math.random()随机生成0~1的数，这里随机生成0,1,2三个数
+                    this.mood = arr[Math.floor(Math.random()*3)];
+                },
+                removeStyle() {
+                    this.classArr.pop('s1');
+                }   
+            }
+        })
+    </script>
+</body>
+</html>

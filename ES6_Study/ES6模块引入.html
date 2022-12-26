@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">//这个文件需要右击通过liveserver的方式打开才不会报错，liveserver在扩展程序中自行安装
+        //1、通用的导入方式
+        //引入m1.js模块内容
+        // import * as m1 from "./js/m1.js";
+        // console.log(m1);
+        // //引入m2.js模块内容
+        // import * as m2 from "./js/m2.js";
+        // console.log(m2);
+        // //引入m3.js模块内容
+        // import * as m3 from "./js/m3.js";
+        // console.log(m3);
+        //school和fn并不是像前面两个直接在m3中，m3中还有个default
+        //school和fn在的default中
+        // console.log(m3.default.school);
+        // m3.default.fn();
+
+        //2、解构赋值形式
+        // import {school, fn} from "./js/m1.js";
+        // // import {school, fn1} from "./js/m2.js";//这样会出现school和school同名
+        // //可以对其中一个school取别名
+        // import {school as s, fn1} from "./js/m2.js";
+        // //对于默认暴露，引入default
+        // import {default as d} from "./js/m3.js";
+
+        //3、简便形式，只能针对默认暴露
+        import m3 from "./m3.js";
+    </script>
+</body>
+</html>

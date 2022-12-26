@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--
+        1、一个重要的内置关系：VueComponent.prototype._proto_ === Vue.prototype
+        2、为什么要有这个关系：让组件实例对象(vc)可以访问到Vue原型上的属性、方法
+    -->
+    <div id="root">
+        <school></school>
+    </div>
+    <script>
+        Vue.prototype.x = 99; 
+        const school = Vue.extend({
+            template:`
+                <div>
+                    <h3>{{msg}}</h3>   
+                    <button @click="showX">点我弹出x的值</button> 
+                </div>
+            `,
+            data() {
+                return {
+                    msg: '哈哈'
+                }
+            },
+            methods: {
+                showX() {
+                    alert(this.x);
+                }
+            }
+        }) 
+        new Vue({
+            el: '#root',
+            components: {
+                school
+            }
+        })
+
+    </script>
+</body>
+</html>

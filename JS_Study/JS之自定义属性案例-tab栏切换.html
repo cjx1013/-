@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 500px;
+            height: 400px;
+            background-color: #eee;
+            margin: 200px auto;
+        }
+        .container ul{
+            list-style: none;
+            width: 95%;
+            height: 60px;
+            margin: 0 10px;
+        }
+        .container ul li{
+            float: left;
+            padding:0 20px;
+            margin: 0 10px;
+            line-height: 60px;
+            text-align: center;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .container .content{
+            height: 300px;
+            margin-top: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+        .bg{
+            background-color: hotpink;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li>商品简介</li>
+            <li>商品详情</li>
+            <li>评价</li>
+            <li>关于我们</li>
+        </ul>
+        <div class="content">
+            <div>商品简介</div>
+            <div>商品详情</div>
+            <div>评价</div>
+            <div>关于我们</div>
+        </div>
+    </div>
+    <script>
+        var container = document.querySelector('.container');
+        var lis = container.querySelectorAll('li');
+        var divs = document.querySelector('.content');
+        var items = divs.querySelectorAll('div');
+        for(var i = 0; i < lis.length; i++){
+            //给每个li添加自定义属性index
+            lis[i].setAttribute('index',i);
+            lis[i].onclick = function() {
+                for(var i = 0; i < lis.length; i++){
+                    lis[i].className = '';
+                }
+                this.className = 'bg';
+                var index = this.getAttribute('index');
+                for(var i = 0; i < items.length; i++){
+                    items[i].style.display= 'none';
+                }
+                //根据index选择显示哪个div
+                items[index].style.display = 'block';
+            }
+            
+
+        }
+    </script>
+</body>
+</html>

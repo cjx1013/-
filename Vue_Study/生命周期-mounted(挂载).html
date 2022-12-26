@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--
+        生命周期：
+            1、又名：生命周期回调函数、生命周期函数、生命周期钩子
+            2、是什么：Vue在关键时刻帮我们调用的一些特殊名称的函数
+            3、生命周期函数的名字不可更改，但函数的具体内容是程序员根据需求编写
+            4、生命周期函数中的this指向是vm或组件实例对象
+    -->
+    <!--
+        需求：让一段文字透明度不断由深到浅，再由浅到深
+    -->
+    <div id="root">
+        <!-- <h2 :style="{opacity: opacity}">你好,Vue,我系渣渣辉,系兄弟就来砍我</h2> -->
+        <!--简写，之前讲的对象简写-->
+        <h2 :style="{opacity}">你好,Vue,我系渣渣辉,系兄弟就来砍我</h2>
+
+        <!--第二种方法-->
+        <!-- {{change()}} -->
+        <!--心想着，插值语法来调用change函数，把返回值展现在页面上，但是change没有返回值
+        所以返回的是undefined，而Vue对于undefined的数据不会显示在页面上，
+        似乎可以，但是，当调用change时，change里对data中的数据opacity进行了更改，会导致Vue重新对模板解析
+        就会再次帮你调用change，这样就会不断开启定时器，所以这种办法，不可-->
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                opacity:1
+            },
+            methods: {
+                //第二种方法
+                // change() {
+                //     setInterval(() => {
+                //         this.opacity -= 0.01;
+                //         if(this.opacity <= 0) this.opacity = 1;
+                //     }, 16);
+                // }
+            },
+            //第三种方法,通过mounted函数，它是在Vue完成模板的解析（解析模板，生成虚拟DOM，对比新旧虚拟DOM，把
+            // 更新页面），并把初始的真实DOM元素放入页面后（挂载完毕）调用mounted，注意是初始的真实DOM
+            //后面生成的DOM就是更新的了，不算初始的了,以后你再解析模板，生成新的真实DOM就不会调用了
+            mounted() {
+                console.log(this);
+                setInterval(() => {
+                    this.opacity -= 0.01;
+                    if(this.opacity <= 0) this.opacity = 1;
+                }, 16);
+            },
+        })
+        //第一种办法，在Vue实例外设置定时器（不推荐，建议是写在Vue实例里）
+        // setInterval(() => {
+        //     vm.opacity -= 0.01;
+        //     //不要写vm.opacity == 0 ，因为浮点数相加减,如0.3+0.1并不等于0.4
+        //     if(vm.opacity <= 0) vm.opacity = 1;
+        // }, 16);
+    </script>
+</body>
+</html>

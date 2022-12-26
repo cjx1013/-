@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击拆除炸弹</button>
+    <script>
+        var btn = document.querySelector('button');
+        //window.setTimeout ,window可以省略
+        //为了区别其他定时器，我们可以给定时器一个标识符（名字）
+        var time1 = setTimeout(function() {
+            console.log('爆炸了！');
+        },2000)
+        function fn() {
+            console.log('又爆炸了！');
+        }
+        var time2 = setTimeout(fn, 4000);
+        //setTimeout('fn()', 4000)不推荐这种写法
+        
+        btn.addEventListener('click', function() {
+            //清除定时器
+            clearTimeout(time1);//拆除炸弹time1
+        })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+#father{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background-color: pink;
+    //father里面的inner
+    .inner{
+        background-color: skyblue;
+        //此时我让给inner加一个伪类选择器hover
+        //不要直接这样写，这样写就变成了hover与.inner之间会有个空格
+        // :hover{
+        //     background-color: red;
+        // }
+        //需要在前面加个&
+        &:hover{
+            background-color: red;
+        }
+    }
+   
+    
+}

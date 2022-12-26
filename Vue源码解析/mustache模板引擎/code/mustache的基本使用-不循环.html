@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list"> 
+        
+    </ul>
+    <script type="module">
+        import Mustache from './mustache.js'
+        // console.log(Mustache);
+        let templateStr = `
+            我买了一个{{thing}}，价格是{{price}}
+        `
+        let data = {
+            thing: '华为手机',
+            price: '8888'
+        }
+
+        let domStr = Mustache.render(templateStr, data)
+        // console.log(domStr);
+        let list = document.getElementById('list')
+        list.innerHTML = domStr
+    </script>
+    
+</body>
+</html>
